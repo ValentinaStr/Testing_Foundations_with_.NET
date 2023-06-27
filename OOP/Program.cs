@@ -1,4 +1,4 @@
-﻿using OOP.Types_of_transport;
+﻿using OOP.TypesOfTransport;
 
 namespace OOP
 {

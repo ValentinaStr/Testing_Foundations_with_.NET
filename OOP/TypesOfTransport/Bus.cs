@@ -1,8 +1,6 @@
 ﻿using OOP.Specification;
-using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace OOP.Types_of_transport
+namespace OOP.TypesOfTransport
 {
     internal class Bus : Transport
     {
