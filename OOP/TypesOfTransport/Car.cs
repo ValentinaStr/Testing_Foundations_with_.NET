@@ -1,10 +1,10 @@
 ﻿using OOP.Specification;
 namespace OOP.TypesOfTransport
 {
-    internal class Car : Transport
-    {
-        internal string BodyStyle { get; set; }
-        internal int NumberOfSeats { get; set; }
+	internal class Car : Transport
+	{
+		internal string BodyStyle { get; set; }
+		internal int NumberOfSeats { get; set; }
 
 		public Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
 		{

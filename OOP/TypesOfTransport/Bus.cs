@@ -2,8 +2,8 @@
 
 namespace OOP.TypesOfTransport
 {
-    internal class Bus : Transport
-    {
+	internal class Bus : Transport
+	{
 		internal int NumberOfFloors { get; set; }
 		internal string TypeAirConditioner { get; set; }
 

@@ -2,12 +2,12 @@
 
 namespace OOP.TypesOfTransport
 {
-    internal abstract class Transport
-    {
+	internal abstract class Transport
+	{
 		internal string Model { get; set; }
-        internal Engine EngineInformation;
-        internal Transmission TransmissionInformation;
-        internal Chassis ChassisInformation;
+		internal Engine EngineInformation;
+		internal Transmission TransmissionInformation;
+		internal Chassis ChassisInformation;
 
 		protected Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
 		{
