@@ -10,16 +10,19 @@ namespace Tests_Basic_of_.NET_and_C_
 		{
 			NumberConversion.Resalt = "";
 		}
-			[TestMethod]
+
+		[TestMethod]
 		public void ConvertToBinary()
 		{
 			Assert.AreEqual("11010", NumberConversion.Conversation(26, 2));
 		}
+
 		[TestMethod]
 		public void ConvertTovigesimalSystem()
 		{
 			Assert.AreEqual("30", NumberConversion.Conversation(60, 20));
 		}
+
 		[TestMethod]
 		public void ConvertZero()
 		{
