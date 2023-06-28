@@ -18,7 +18,7 @@ namespace OOP.TypesOfTransport
 			return base.Model + 
 				"\n Bus with the following characteristics:" + 
 				"\n Number Of Floors:" + NumberOfFloors +
-				"\n Number Of Seatsr:" + NumberOfSeats +
+				"\n Number Of Seats:" + NumberOfSeats +
 				base.GetStringWithAllInformation();
 		}
 	}

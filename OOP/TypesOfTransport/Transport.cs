@@ -19,7 +19,7 @@ namespace OOP.TypesOfTransport
 
 		internal virtual string GetStringWithAllInformation()
 		{
-			return EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
+			return "\n " + EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
 		}
 	}
 }
