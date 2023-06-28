@@ -21,7 +21,7 @@ namespace OOP
 											new("Automatic", 6, "Aisin Seiki"),
 											new(4, "9870GRT56R", 608));
 
-			var mercedesBenzTourismo = new Bus("Mercedes Benz Tourismo",1, "Carrier",
+			var mercedesBenzTourismo = new Bus("Mercedes Benz Tourismo",1, 28,
 											new("6-cylinder",428, 7698, "OM 936.971"),
 											new("Automatic", 6, "Mercedes-Benz"),
 											new(6, "8569GRT56Q", 19000));
