@@ -1,12 +1,19 @@
-﻿namespace OOP.Specification
+﻿using System.Xml.Linq;
+
+namespace OOP.Specification
 {
-    internal class Engine
+    public class Engine
     {
-        internal string Type;
-        internal int Power;
-        internal int Volume;
-        internal string SerialNumber;
-        public Engine(string type, int power, int volume, string serialNumber)
+        public string Type;
+		public double Power;
+		public double Volume;
+		public string SerialNumber;
+
+		public Engine()
+		{
+		}
+
+		public Engine(string type, double power, double volume, string serialNumber)
         {
             Type = type;
             Power = power;
@@ -21,6 +28,23 @@
 				"\n  Power: " + Power +
 				"\n  Voume: " + Volume +
                 "\n  Serial Number:" + SerialNumber + "\n";
+		}
+
+		public XElement GetEngineInformationXML()
+		{
+			return new XElement("Engine",
+				new XElement("Type", Type),
+				new XElement("Power", Power),
+				new XElement("Volume", Volume),
+				new XElement("SerialNumber", SerialNumber));
+		}
+
+		public XElement GetEngineTypePowerSerialNumberXML()
+		{
+			return new XElement("Engine",
+				new XElement("Type", Type),
+				new XElement("SerialNumber", SerialNumber),
+				new XElement("Power", Power));
 		}
 	}
 }

@@ -1,16 +1,24 @@
-﻿namespace OOP.Specification
+﻿using System.Xml.Linq;
+
+namespace OOP.Specification
 {
-    internal class Chassis
+    public class Chassis
     {
-        internal int CountOfWheels;
-        internal string NumberOfChassis;
-        internal int BearingCapacity;
-        public Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
+        public int CountOfWheels;
+        public string NumberOfChassis;
+        public int BearingCapacity;
+
+		public Chassis()
+		{
+		}
+
+		public Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
         {
             CountOfWheels = countOfWheels;
             NumberOfChassis = numberOfChassis;
             BearingCapacity = bearingCapacity;
         }
+
 
 		public string GetInformation()
 		{
@@ -18,6 +26,14 @@
 				"  Count Of Wheels: " + CountOfWheels +
 				"\n  Number Of Chassis: " + NumberOfChassis +
 				"\n  Bearing Capacity:" + BearingCapacity;
+		}
+
+		public XElement GetChassisInformationXML()
+		{
+			return new XElement("Chassis",
+					new XElement("CountOfWheels", CountOfWheels),
+					new XElement("NumberOfChassis", NumberOfChassis),
+					new XElement("BearingCapacity", BearingCapacity));
 		}
 	}
 }

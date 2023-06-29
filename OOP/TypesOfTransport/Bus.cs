@@ -1,16 +1,21 @@
 ﻿using OOP.Specification;
+using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	internal class Bus : Transport
+	public class Bus : Transport
 	{
-		internal int NumberOfFloors { get; set; }
-		internal int NumberOfSeats { get; set; }
+		public int NumberOfFloors { get; set; }
+		public int NumberOfSeats { get; set; }
 
-		public Bus(string model, int numberOfFloors, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		public Bus(string model, int numberOfFloors, int numberOfSeats, Engine engin, Transmission transmission, Chassis chassis) : base(model, engin, transmission, chassis)
 		{
 			NumberOfFloors = numberOfFloors;
 			NumberOfSeats = numberOfSeats;
+		
+		}
+		protected Bus()
+		{
 		}
 
 		internal override string GetStringWithAllInformation()
@@ -20,6 +25,16 @@ namespace OOP.TypesOfTransport
 				"\n Number Of Floors:" + NumberOfFloors +
 				"\n Number Of Seats:" + NumberOfSeats +
 				base.GetStringWithAllInformation();
+		}
+
+		public override XElement GetSpecificationXML()
+		{
+			XElement bus = new XElement("Bus", base.Model,
+							new XElement("NumberOfFloors", NumberOfFloors),
+							new XElement("NumberOfSeats", NumberOfSeats));
+
+			bus.Add(base.GetSpecificationXML());
+			return bus;
 		}
 	}
 }
