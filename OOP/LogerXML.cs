@@ -1,5 +1,4 @@
-﻿using OOP.TypesOfTransport;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 namespace OOP
 {
 	internal static class LogerXML

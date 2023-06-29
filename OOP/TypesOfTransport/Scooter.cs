@@ -2,7 +2,6 @@
 using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
-
 {
 	public class Scooter : Transport
 	{
@@ -23,6 +22,7 @@ namespace OOP.TypesOfTransport
 				"\n Type Of Scooter:" + TypeOfScooter +
 				base.GetStringWithAllInformation();
 		}
+
 		public override XElement GetSpecificationXML()
 		{
 			XElement scooter = new XElement("Scooter", base.Model,

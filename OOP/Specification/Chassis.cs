@@ -19,7 +19,6 @@ namespace OOP.Specification
             BearingCapacity = bearingCapacity;
         }
 
-
 		public string GetInformation()
 		{
 			return "Chassis:  \n" +

@@ -23,6 +23,7 @@ namespace OOP.TypesOfTransport
 				"\n Trailer Type:" + TrailerType +
 				base.GetStringWithAllInformation();
 		}
+
 		public override XElement GetSpecificationXML()
 		{
 			XElement truck = new XElement("Truck", base.Model,
