@@ -30,11 +30,11 @@ namespace OOP.TypesOfTransport
 		public virtual XElement GetSpecificationXML()
 		{
 
-			XElement tr = new XElement("Specification");
-			tr.Add(EngineInformation.GetEngineInformationXML());
-			tr.Add(TransmissionInformation.GetTransmissionInformationXML());
-			tr.Add(ChassisInformation.GetChassisInformationXML());
-			return tr;
+			XElement specification = new XElement("Specification");
+			specification.Add(EngineInformation.GetEngineInformationXML());
+			specification.Add(TransmissionInformation.GetTransmissionInformationXML());
+			specification.Add(ChassisInformation.GetChassisInformationXML());
+			return specification;
 		}
 
 		public static XElement GetTransportInformationXML(List<Transport> transports)
@@ -61,15 +61,16 @@ namespace OOP.TypesOfTransport
 
 			return xdocOfTransports;
 		}
+
 		public static XElement GetTransportInformationXMLSortByTransmission(List<Transport> transports)
 		{
 			var listOfTransporsGroupsByTransmission = transports.GroupBy(p => p.TransmissionInformation.Type).ToList();
-			XElement GroupByTransmissionXML = new XElement("Transport");
+			XElement xdocGroupByTransmissionsType = new XElement("Transport");
 
 			foreach (var transportsGroupe in listOfTransporsGroupsByTransmission)
 			{
 				XElement typeTransmission = new XElement("TypeOfTransmission", transportsGroupe.Key);
-				GroupByTransmissionXML.Add(typeTransmission);
+				xdocGroupByTransmissionsType.Add(typeTransmission);
 
 				foreach (Transport d in transportsGroupe)
 				{
@@ -77,7 +78,7 @@ namespace OOP.TypesOfTransport
 				}
 			}
 
-			return GroupByTransmissionXML;
+			return xdocGroupByTransmissionsType;
 		}
 	}
 }
