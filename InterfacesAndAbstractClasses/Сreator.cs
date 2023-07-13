@@ -53,13 +53,13 @@
 				Console.ForegroundColor = ConsoleColor.White;
 				coordinate.Z = Convert.ToInt16(Console.ReadLine());
 			}
+
 			catch 
 			{
 				coordinate = new(0, 0, 0);
 			}
 
 			Console.ForegroundColor = ConsoleColor.White;
-
 			return coordinate;
 		}
 

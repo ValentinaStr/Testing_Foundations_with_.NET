@@ -33,7 +33,6 @@
 				}
 				Console.WriteLine($"You have entered an invalid speed. Max speed is {MaxSpeed} km/h.\n Please try again.");
 				return GetSpeed();
-				
 			}
 
 			catch 
