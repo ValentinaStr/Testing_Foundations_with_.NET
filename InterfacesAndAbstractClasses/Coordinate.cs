@@ -2,10 +2,10 @@
 {
 	internal struct Coordinate
 	{
-		private int x;
-		private int y;
-		private int z;
-		public int X
+		private double x;
+		private double y;
+		private double z;
+		public double X
 		{
 			get => x; 
 			set 
@@ -14,7 +14,7 @@
 			}
 		}
 
-		public int Y
+		public double Y
 		{
 			get => y; 
 			set
@@ -23,7 +23,7 @@
 			}
 		}
 
-		public int Z
+		public double Z
 		{
 			get => z;
 			set 
@@ -32,11 +32,16 @@
 			}
 		}
 
-		public Coordinate(int x, int y, int z)
+		public Coordinate(double x = 0, double y = 0, double z = 0)
 		{
 			X = x;
 			Y = y;
 			Z = z;
+		}
+
+		public string GetCoordinateToString()
+		{
+			return $"({x}:{y}:{z})";
 		}
 	}
 }

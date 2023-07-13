@@ -4,9 +4,12 @@
 	{
 		Coordinate CurrentPosition { get; set; }
 		double Speed { get; set; }
-		double FlightAaltitude { get; set; }
-
+		
 		void FlyTo(Coordinate newPosition);
-		double GetFlyTime(Coordinate newPosition);
+		TimeSpan GetFlyTime(Coordinate newPosition);
+
+		double GetDistance(Coordinate newPosition);
+
+		string GetDescription();
 	}
 }
