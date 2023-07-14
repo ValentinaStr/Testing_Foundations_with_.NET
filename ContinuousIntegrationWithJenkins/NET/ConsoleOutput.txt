@@ -1,0 +1,67 @@
+Started by user Valentina Strazhnikava
+Running as SYSTEM
+Building on the built-in node in workspace C:\ProgramData\Jenkins\.jenkins\workspace\Calculator
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\cmd\git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.git # timeout=10
+Fetching changes from the remote Git repository
+ > C:\Program Files\Git\cmd\git.exe config remote.origin.url https://github.com/vitalliuss/helloci.git # timeout=10
+Fetching upstream changes from https://github.com/vitalliuss/helloci.git
+ > C:\Program Files\Git\cmd\git.exe --version # timeout=10
+ > git --version # 'git version 2.39.0.windows.1'
+ > C:\Program Files\Git\cmd\git.exe fetch --tags --force --progress -- https://github.com/vitalliuss/helloci.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\cmd\git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 71518a34152cb6c6039a2443ced60af30a31f14c (refs/remotes/origin/master)
+ > C:\Program Files\Git\cmd\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -f 71518a34152cb6c6039a2443ced60af30a31f14c # timeout=10
+Commit message: "Merge pull request #16 from EvgeniyRozhenko/fix-pom-utf8"
+ > C:\Program Files\Git\cmd\git.exe rev-list --no-walk 71518a34152cb6c6039a2443ced60af30a31f14c # timeout=10
+Path To MSBuild.exe: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe
+Executing the command cmd.exe /C " chcp 1252 & "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe" .NET\Calculator.sln " && exit %%ERRORLEVEL%% from C:\ProgramData\Jenkins\.jenkins\workspace\Calculator
+[Calculator] $ cmd.exe /C " chcp 1252 & "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe" .NET\Calculator.sln " && exit %%ERRORLEVEL%%
+Active code page: 1252
+MSBuild version 17.6.3+07e294721 for .NET Framework
+Building the projects in this solution one at a time. To enable parallel build, please add the "-m" switch.
+Build started 7/4/2023 5:54:15 PM.
+
+Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator.sln" on node 1 (default targets).
+ValidateSolutionConfiguration:
+  Building solution configuration "Debug|Any CPU".
+Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator.sln" (1) is building "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator\Calculator.csproj" (2) on node 1 (default targets).
+GenerateTargetFrameworkMonikerAttribute:
+Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+CoreGenerateAssemblyInfo:
+Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+CoreCompile:
+Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+GenerateBuildDependencyFile:
+Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+CopyFilesToOutputDirectory:
+  Calculator -> C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator\bin\Debug\netstandard2.0\Calculator.dll
+Done Building Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator\Calculator.csproj" (default targets).
+Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator.sln" (1) is building "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\CalculatorTest\CalculatorTest.csproj" (3) on node 1 (default targets).
+GenerateTargetFrameworkMonikerAttribute:
+Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+CoreGenerateAssemblyInfo:
+Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+CoreCompile:
+Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+_CopyOutOfDateSourceItemsToOutputDirectory:
+Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+_CopyOutOfDateSourceItemsToOutputDirectoryAlways:
+  Copying file from "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\CalculatorTest\appconfig.json" to "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\CalculatorTest\bin\Debug\netcoreapp3.1\appconfig.json".
+GenerateBuildDependencyFile:
+Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+GenerateBuildRuntimeConfigurationFiles:
+Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+CopyFilesToOutputDirectory:
+  CalculatorTest -> C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\CalculatorTest\bin\Debug\netcoreapp3.1\CalculatorTest.dll
+Done Building Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\CalculatorTest\CalculatorTest.csproj" (default targets).
+Done Building Project "C:\ProgramData\Jenkins\.jenkins\workspace\Calculator\.NET\Calculator.sln" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.96
+Finished: SUCCESS
