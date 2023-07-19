@@ -11,6 +11,7 @@ namespace OOP.TypesOfTransport
 		{
 			TypeOfScooter = typeOfScooter;
 		}
+
 		internal override string GetStringWithAllInformation()
 		{
 			return base.Model + "\n Scooter with the following characteristics:" +
