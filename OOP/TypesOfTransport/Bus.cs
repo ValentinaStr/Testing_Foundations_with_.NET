@@ -11,9 +11,9 @@ namespace OOP.TypesOfTransport
 		public Bus(string model, int numberOfFloors, int numberOfSeats, Engine engin, Transmission transmission, Chassis chassis) : base(model, engin, transmission, chassis)
 		{
 			NumberOfFloors = numberOfFloors;
-			NumberOfSeats = numberOfSeats;
-		
+			NumberOfSeats = numberOfSeats;		
 		}
+
 		protected Bus()
 		{
 		}
