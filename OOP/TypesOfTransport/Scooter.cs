@@ -1,9 +1,10 @@
 ﻿using OOP.Specification;
 
-namespace OOP.Types_of_transport
+namespace OOP.TypesOfTransport
+
 {
-    internal class Scooter : Transport
-    {
+	internal class Scooter : Transport
+	{
 		internal string TypeOfScooter { get; set; }
 
 		public Scooter(string model, string typeOfScooter, Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)

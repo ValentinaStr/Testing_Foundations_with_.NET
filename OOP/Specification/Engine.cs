@@ -18,7 +18,8 @@
 		{
             return "Engine:  \n" +
                 "  Type: " + Type +
-                "\n  Voume: " + Volume +
+				"\n  Power: " + Power +
+				"\n  Voume: " + Volume +
                 "\n  Serial Number:" + SerialNumber + "\n";
 		}
 	}

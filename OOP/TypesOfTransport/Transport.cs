@@ -1,13 +1,13 @@
 ﻿using OOP.Specification;
 
-namespace OOP.Types_of_transport
+namespace OOP.TypesOfTransport
 {
-    internal abstract class Transport
-    {
+	internal abstract class Transport
+	{
 		internal string Model { get; set; }
-        internal Engine EngineInformation;
-        internal Transmission TransmissionInformation;
-        internal Chassis ChassisInformation;
+		internal Engine EngineInformation;
+		internal Transmission TransmissionInformation;
+		internal Chassis ChassisInformation;
 
 		protected Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
 		{
@@ -19,7 +19,7 @@ namespace OOP.Types_of_transport
 
 		internal virtual string GetStringWithAllInformation()
 		{
-			return EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
+			return "\n " + EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
 		}
 	}
 }

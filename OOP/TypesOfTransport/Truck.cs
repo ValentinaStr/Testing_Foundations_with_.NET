@@ -1,5 +1,5 @@
 ﻿using OOP.Specification;
-namespace OOP.Types_of_transport
+namespace OOP.TypesOfTransport
 {
 	internal class Truck : Transport
 	{
