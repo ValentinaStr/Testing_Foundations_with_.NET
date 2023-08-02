@@ -8,7 +8,7 @@ namespace Tests_Basic_of_.NET_and_C_
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			NumberConversion.Resalt = "";
+			NumberConversion.resalt = "";
 		}
 
 		[TestMethod]
@@ -32,7 +32,7 @@ namespace Tests_Basic_of_.NET_and_C_
 		[TestMethod]
 		public void ConvertNegativeNumber()
 		{
-			Assert.AreEqual("-11010", NumberConversion.Conversation(-26,2));
+			Assert.AreEqual("-11010", NumberConversion.Conversation(-26, 2));
 		}
 	}
 }

@@ -2,23 +2,24 @@
 {
 	public class NumberConversion
 	{
-		public static string Resalt;
-		private static string Values = "0123456789ABCDEFGHIJ";
+		public static string resalt;
+		public const string Values = "0123456789ABCDEFGHIJ";
 
 		public static string Conversation(int number, int exponentiation)
 		{
 			int res = Math.Abs(number) % exponentiation;
-			Resalt = Values[res] + Resalt;
+			resalt = Values[res] + resalt;
 
 			if (Math.Abs(number) / exponentiation < exponentiation)
 			{
 				if (number < 0)
 				{
-					return Resalt = "-" + Values[Math.Abs(number) / exponentiation] + Resalt;
+					return resalt = "-" + Values[Math.Abs(number) / exponentiation] + resalt;
 				}
 
-				return Resalt = Values[Math.Abs(number) / exponentiation] + Resalt;
+				return resalt = Values[Math.Abs(number) / exponentiation] + resalt;
 			}
+
 			return Conversation(number / exponentiation, exponentiation);
 		}
 
@@ -35,6 +36,7 @@
 				Console.WriteLine("The entered number is not correct. Try again. ");
 				return CheckNumberToConvert();
 			}
+
 			return Convert.ToInt32(number);
 		}
 
@@ -60,6 +62,7 @@
 				Console.WriteLine("The entered notation is not integer. Try again.! ");
 				return CheckNotationToConvert();
 			}
+
 			return Convert.ToInt32(notation);
 		}
 	}
