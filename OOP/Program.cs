@@ -4,7 +4,7 @@ namespace OOP
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			var hondaForza = new Scooter("HondaForza", "Sports",
 											new("Four stroke", 5, 300, "1P39FMB"),

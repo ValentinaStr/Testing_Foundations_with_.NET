@@ -9,7 +9,7 @@ namespace OOP.TypesOfTransport
 		internal Transmission TransmissionInformation;
 		internal Chassis ChassisInformation;
 
-		protected Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
+		internal Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
 		{
 			Model = model;
 			EngineInformation = engineInformation;

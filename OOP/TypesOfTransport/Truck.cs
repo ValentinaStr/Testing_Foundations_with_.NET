@@ -5,7 +5,7 @@ namespace OOP.TypesOfTransport
 	{
 		internal string TrailerType { get; set; }
 
-		public Truck(string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		internal Truck(string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
 		{
 			TrailerType = trailerType;
 		}

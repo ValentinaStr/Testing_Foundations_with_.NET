@@ -3,10 +3,19 @@ namespace OOP.TypesOfTransport
 {
 	internal class Car : Transport
 	{
+		private int numberOfSeats;
 		internal string BodyStyle { get; set; }
-		internal int NumberOfSeats { get; set; }
+		internal int NumberOfSeats
+		{
+			get { return numberOfSeats; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				numberOfSeats = value;
+			}
+		}
 
-		public Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
+		internal Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
 		{
 			BodyStyle = bodyStyle;
 			NumberOfSeats = numberOfSeats;

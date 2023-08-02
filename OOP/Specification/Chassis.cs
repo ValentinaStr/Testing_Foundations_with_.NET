@@ -1,18 +1,28 @@
 ﻿namespace OOP.Specification
 {
-    internal class Chassis
-    {
-        internal int CountOfWheels;
-        internal string NumberOfChassis;
-        internal int BearingCapacity;
-        public Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
-        {
-            CountOfWheels = countOfWheels;
-            NumberOfChassis = numberOfChassis;
-            BearingCapacity = bearingCapacity;
-        }
+	internal class Chassis
+	{
+		private int countOfWheels;
+		internal string NumberOfChassis { get; set; }
+		internal int BearingCapacity { get; set; }
+		internal int CountOfWheels
+		{
+			get { return countOfWheels; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Count Of Wheels.");
+				countOfWheels = value;
+			}
+		}
 
-		public string GetInformation()
+		internal Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
+		{
+			CountOfWheels = countOfWheels;
+			NumberOfChassis = numberOfChassis;
+			BearingCapacity = bearingCapacity;
+		}
+
+		internal string GetInformation()
 		{
 			return "Chassis:  \n" +
 				"  Count Of Wheels: " + CountOfWheels +
