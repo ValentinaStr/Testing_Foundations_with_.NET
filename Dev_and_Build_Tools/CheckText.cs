@@ -15,6 +15,7 @@
 				count++;
 				result = Math.Max(result, count);
 			}
+
 			return result;
 		}
 	}
