@@ -5,7 +5,7 @@
 		private double x;
 		private double y;
 		private double z;
-		public double X
+		internal double X
 		{
 			get => x;
 			set
@@ -20,7 +20,7 @@
 			}
 		}
 
-		public double Y
+		internal double Y
 		{
 			get => y;
 			set
@@ -35,7 +35,7 @@
 			}
 		}
 
-		public double Z
+		internal double Z
 		{
 			get => z;
 			set
@@ -50,14 +50,14 @@
 			}
 		}
 
-		public Coordinate(double x = 0, double y = 0, double z = 0)
+		internal Coordinate(double x = 0, double y = 0, double z = 0)
 		{
 			X = x;
 			Y = y;
 			Z = z;
 		}
 
-		public string GetCoordinateToString()
+		internal string GetCoordinateToString()
 		{
 			return $"({x}:{y}:{z})";
 		}
