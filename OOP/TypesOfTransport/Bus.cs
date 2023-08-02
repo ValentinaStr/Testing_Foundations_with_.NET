@@ -12,7 +12,11 @@ namespace OOP.TypesOfTransport
 			get { return numberOfFloors; }
 			set
 			{
-				if (value < 1) throw new ArgumentOutOfRangeException("The number of floors mast be more than zero");
+				if (value < 1)
+				{
+					throw new ArgumentOutOfRangeException("The number of floors mast be more than zero");
+				}
+
 				numberOfFloors = value;
 			}
 		}
@@ -21,7 +25,11 @@ namespace OOP.TypesOfTransport
 			get { return numberOfSeats; }
 			set
 			{
-				if (value < 0) throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				if (value < 0)
+				{
+					throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				}
+
 				numberOfSeats = value;
 			}
 		}

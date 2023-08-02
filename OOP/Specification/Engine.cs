@@ -12,7 +12,11 @@ namespace OOP.Specification
 			get { return power; }
 			set
 			{
-				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Power Of Engine.");
+				if (value < 1)
+				{
+					throw new ArgumentOutOfRangeException("Wrong Power Of Engine.");
+				}
+
 				power = value;
 			}
 		}
@@ -22,7 +26,11 @@ namespace OOP.Specification
 			get { return volume; }
 			set
 			{
-				if (value < 0) throw new ArgumentOutOfRangeException("Wrong Volume Of Engine.");
+				if (value < 0)
+				{
+					throw new ArgumentOutOfRangeException("Wrong Volume Of Engine.");
+				}
+
 				volume = value;
 			}
 		}

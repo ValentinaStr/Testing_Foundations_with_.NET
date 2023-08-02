@@ -12,7 +12,11 @@ namespace OOP.TypesOfTransport
 			get { return numberOfSeats; }
 			set
 			{
-				if (value < 1) throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				if (value < 1)
+				{
+					throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				}
+
 				numberOfSeats = value;
 			}
 		}

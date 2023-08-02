@@ -11,7 +11,11 @@ namespace OOP.Specification
 			get { return numberOfGears; }
 			set
 			{
-				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Number of gears.");
+				if (value < 1)
+				{
+					throw new ArgumentOutOfRangeException("Wrong Number of gears.");
+				}
+
 				numberOfGears = value;
 			}
 		}
