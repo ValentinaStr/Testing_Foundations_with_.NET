@@ -2,38 +2,43 @@
 
 namespace OOP.Specification
 {
-	public class Transmission
-    {
-		public string Type;
-		public int NumberOfGears;
-		public string Manufacturer;
-
-		public Transmission()
+	internal class Transmission
+	{
+		private int numberOfGears;
+		internal string Type { get; set; }
+		internal int NumberOfGears
 		{
+			get { return numberOfGears; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Number of gears.");
+				numberOfGears = value;
+			}
 		}
 
-		public Transmission(string type, int numberOfGears, string manufacturer)
-        {
-            Type = type;
-            NumberOfGears = numberOfGears;
-            Manufacturer = manufacturer;
-        }
+		internal string Manufacturer {get; set; }
 
-
-        public string GetInformation()
-        {
-            return "Transmission : \n" +
-                "  Type:" + Type +
-                "\n  Number Of Gears:" + NumberOfGears +
-                "\n  Manufacturer:" + Manufacturer +"\n";
+		internal Transmission(string type, int numberOfGears, string manufacturer)
+		{
+			Type = type;
+			NumberOfGears = numberOfGears;
+			Manufacturer = manufacturer;
 		}
 
-        public XElement GetTransmissionInformationXML()
-        {
+		internal string GetInformation()
+		{
+			return "Transmission : \n" +
+				"  Type:" + Type +
+				"\n  Number Of Gears:" + NumberOfGears +
+				"\n  Manufacturer:" + Manufacturer + "\n";
+		}
+
+		internal XElement GetTransmissionInformationXML()
+		{
 			return new XElement("Transmission",
 					new XElement("Type", Type),
 					new XElement("NumberOfGears", NumberOfGears),
 					new XElement("Manufacturer", Manufacturer));
 		}
-    }
+	}
 }

@@ -4,7 +4,7 @@ namespace OOP
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			/*Populate a collection containing objects of type "Truck", "Car", "Bus", "Scooter"
 			 (from the previous OOP task) with different field values.
@@ -119,21 +119,17 @@ namespace OOP
 			//Complete information about all vehicles with an engine capacity greater than 1.5 liters;
 
 			var listOfTransportSelectByEngieneVolume = transports.Where(p => (p.EngineInformation.Volume > 1.5)).ToList();
-
-			LogerXML.Log(Transport.GetTransportInformationXML(listOfTransportSelectByEngieneVolume),
-						@"D:\projects\dotnet\Testing_Foundations_with_.NET\OOP\List of transports with engime volume less 1.5.xml");
+			LogerXML.Log("List of transports with engime volume less 1.5.xml", Transport.GetTransportInformationXML(listOfTransportSelectByEngieneVolume));
 
 			// Engine type, serial number and power for all buses and trucks;
 
 			var listOfBusAndTuck = transports.OfType<Bus>().Union<Transport>(transports.OfType<Truck>()).ToList();
-			
-			LogerXML.Log(Transport.GetTransportEngineInformationXML(listOfBusAndTuck),
-						@"D:\projects\dotnet\Testing_Foundations_with_.NET\OOP\List of engines buses and trucks.xml");
+
+			LogerXML.Log("List of engines buses and trucks", Transport.GetTransportEngineInformationXML(listOfBusAndTuck));
 
 			//Complete information about all vehicles, grouped by transmission type.
 
-			LogerXML.Log(Transport.GetTransportInformationXMLSortByTransmission(transports),
-						@"D:\projects\dotnet\Testing_Foundations_with_.NET\OOP\List of transports sort by transmission.xml");
+			LogerXML.Log("List of transports sort by transmission", Transport.GetTransportInformationXMLSortByTransmission(transports));
 		}
 	}
 }

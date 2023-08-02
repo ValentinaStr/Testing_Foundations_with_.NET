@@ -3,17 +3,13 @@ using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	public class Scooter : Transport
+	internal class Scooter : Transport
 	{
-		public string TypeOfScooter { get; set; }
+		internal string TypeOfScooter { get; set; }
 
-		public Scooter(string model, string typeOfScooter, Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		internal Scooter(string model, string typeOfScooter, Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
 		{
 			TypeOfScooter = typeOfScooter;
-		}
-
-		public Scooter()
-		{
 		}
 
 		internal override string GetStringWithAllInformation()
@@ -23,7 +19,7 @@ namespace OOP.TypesOfTransport
 				base.GetStringWithAllInformation();
 		}
 
-		public override XElement GetSpecificationXML()
+		internal override XElement GetSpecificationXML()
 		{
 			XElement scooter = new XElement("Scooter", base.Model,
 					new XElement("TypeOfScooter", TypeOfScooter));

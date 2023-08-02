@@ -3,19 +3,24 @@ using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	public class Car : Transport
+	internal class Car : Transport
 	{
-		public string BodyStyle { get; set; }
-		public int NumberOfSeats { get; set; }
+		private int numberOfSeats;
+		internal string BodyStyle { get; set; }
+		internal int NumberOfSeats
+		{
+			get { return numberOfSeats; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Number of seats mast be positive number");
+				numberOfSeats = value;
+			}
+		}
 
-		public Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
+		internal Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
 		{
 			BodyStyle = bodyStyle;
 			NumberOfSeats = numberOfSeats;
-		}
-
-		protected Car()
-		{
 		}
 
 		internal override string GetStringWithAllInformation()
@@ -27,7 +32,7 @@ namespace OOP.TypesOfTransport
 				base.GetStringWithAllInformation();
 		}
 
-		public override XElement GetSpecificationXML()
+		internal override XElement GetSpecificationXML()
 		{
 			XElement car = new XElement("Car", base.Model,
 					new XElement("BodyStyle", BodyStyle),

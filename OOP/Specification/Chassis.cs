@@ -2,24 +2,29 @@
 
 namespace OOP.Specification
 {
-    public class Chassis
-    {
-        public int CountOfWheels;
-        public string NumberOfChassis;
-        public int BearingCapacity;
-
-		public Chassis()
+	internal class Chassis
+	{
+		private int countOfWheels;
+		internal string NumberOfChassis { get; set; }
+		internal int BearingCapacity { get; set; }
+		internal int CountOfWheels
 		{
+			get { return countOfWheels; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Count Of Wheels.");
+				countOfWheels = value;
+			}
 		}
 
-		public Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
-        {
-            CountOfWheels = countOfWheels;
-            NumberOfChassis = numberOfChassis;
-            BearingCapacity = bearingCapacity;
-        }
+		internal Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
+		{
+			CountOfWheels = countOfWheels;
+			NumberOfChassis = numberOfChassis;
+			BearingCapacity = bearingCapacity;
+		}
 
-		public string GetInformation()
+		internal string GetInformation()
 		{
 			return "Chassis:  \n" +
 				"  Count Of Wheels: " + CountOfWheels +
@@ -27,7 +32,7 @@ namespace OOP.Specification
 				"\n  Bearing Capacity:" + BearingCapacity;
 		}
 
-		public XElement GetChassisInformationXML()
+		internal XElement GetChassisInformationXML()
 		{
 			return new XElement("Chassis",
 					new XElement("CountOfWheels", CountOfWheels),

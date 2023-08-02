@@ -2,35 +2,51 @@
 
 namespace OOP.Specification
 {
-    public class Engine
-    {
-        public string Type;
-		public double Power;
-		public double Volume;
-		public string SerialNumber;
-
-		public Engine()
+	internal class Engine
+	{
+		private double power;
+		private double volume;
+		internal string Type { get; set; }
+		internal double Power
 		{
+			get { return power; }
+			set
+			{
+				if (value < 1) throw new ArgumentOutOfRangeException("Wrong Power Of Engine.");
+				power = value;
+			}
 		}
 
-		public Engine(string type, double power, double volume, string serialNumber)
-        {
-            Type = type;
-            Power = power;
-            Volume = volume;
-            SerialNumber = serialNumber;
-        }
-
-		public string GetInformation()
+		internal double Volume
 		{
-            return "Engine:  \n" +
-                "  Type: " + Type +
+			get { return volume; }
+			set
+			{
+				if (value < 0) throw new ArgumentOutOfRangeException("Wrong Volume Of Engine.");
+				volume = value;
+			}
+		}
+	
+		internal string SerialNumber { get; set; }
+
+		internal Engine(string type, double power, double volume, string serialNumber)
+		{
+			Type = type;
+			Power = power;
+			Volume = volume;
+			SerialNumber = serialNumber;
+		}
+
+		internal string GetInformation()
+		{
+			return "Engine:  \n" +
+				"  Type: " + Type +
 				"\n  Power: " + Power +
 				"\n  Voume: " + Volume +
-                "\n  Serial Number:" + SerialNumber + "\n";
+				"\n  Serial Number:" + SerialNumber + "\n";
 		}
 
-		public XElement GetEngineInformationXML()
+		internal XElement GetEngineInformationXML()
 		{
 			return new XElement("Engine",
 				new XElement("Type", Type),
@@ -39,7 +55,7 @@ namespace OOP.Specification
 				new XElement("SerialNumber", SerialNumber));
 		}
 
-		public XElement GetEngineTypePowerSerialNumberXML()
+		internal XElement GetEngineTypePowerSerialNumberXML()
 		{
 			return new XElement("Engine",
 				new XElement("Type", Type),

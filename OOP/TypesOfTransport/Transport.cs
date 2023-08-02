@@ -3,18 +3,14 @@ using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	public abstract class Transport
+	internal abstract class Transport
 	{
-		public string Model { get; set; }
-		public Engine EngineInformation;
-		public Transmission TransmissionInformation;
-		public Chassis ChassisInformation;
+		internal string Model { get; set; }
+		internal Engine EngineInformation;
+		internal Transmission TransmissionInformation;
+		internal Chassis ChassisInformation;
 
-		public Transport()
-		{
-		}
-
-		public Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
+		internal Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
 		{
 			Model = model;
 			EngineInformation = engineInformation;
@@ -27,7 +23,7 @@ namespace OOP.TypesOfTransport
 			return "\n " + EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
 		}
 
-		public virtual XElement GetSpecificationXML()
+		internal virtual XElement GetSpecificationXML()
 		{
 
 			XElement specification = new XElement("Specification");
@@ -37,7 +33,7 @@ namespace OOP.TypesOfTransport
 			return specification;
 		}
 
-		public static XElement GetTransportInformationXML(List<Transport> transports)
+		internal static XElement GetTransportInformationXML(List<Transport> transports)
 		{
 			XElement xdocOfTransports = new XElement("Transport");
 
@@ -49,7 +45,7 @@ namespace OOP.TypesOfTransport
 			return xdocOfTransports;
 		}
 
-		public static XElement GetTransportEngineInformationXML(List<Transport> transports)
+		internal static XElement GetTransportEngineInformationXML(List<Transport> transports)
 		{
 			XElement xdocOfTransports = new XElement("Transport");
 			foreach (var transport in transports)
@@ -62,7 +58,7 @@ namespace OOP.TypesOfTransport
 			return xdocOfTransports;
 		}
 
-		public static XElement GetTransportInformationXMLSortByTransmission(List<Transport> transports)
+		internal static XElement GetTransportInformationXMLSortByTransmission(List<Transport> transports)
 		{
 			var listOfTransporsGroupsByTransmission = transports.GroupBy(p => p.TransmissionInformation.Type).ToList();
 			XElement xdocGroupByTransmissionsType = new XElement("Transport");

@@ -3,10 +3,11 @@ namespace OOP
 {
 	internal static class LogerXML
 	{
-		public static void Log(XElement xdoc, string PATH)
+		internal static void Log(string nameXMLDoc, XElement xElement)
 		{
-			using StreamWriter writer = new StreamWriter(PATH);
-			writer.Write(xdoc);
+			var xDoc = new XDocument();
+			xDoc.Add(xElement);
+			xDoc.Save($"{nameXMLDoc}.xml");
 		}
 	}
 }

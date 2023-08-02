@@ -3,18 +3,13 @@ using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	public class Truck : Transport
+	internal class Truck : Transport
 	{
-		public string TrailerType { get; set; }
-		
+		internal string TrailerType { get; set; }
 
-		public Truck(string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		internal Truck(string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
 		{
 			TrailerType = trailerType;
-		}
-
-		public Truck()
-		{
 		}
 
 		internal override string GetStringWithAllInformation()
@@ -24,7 +19,7 @@ namespace OOP.TypesOfTransport
 				base.GetStringWithAllInformation();
 		}
 
-		public override XElement GetSpecificationXML()
+		internal override XElement GetSpecificationXML()
 		{
 			XElement truck = new XElement("Truck", base.Model,
 					new XElement("TrailerType", TrailerType));
