@@ -7,28 +7,46 @@
 		private double z;
 		public double X
 		{
-			get => x; 
-			set 
+			get => x;
+			set
 			{
-				if (value >= 0)	{x = value;}
+				if (value < 0)
+				{
+					Console.WriteLine("Coordinate X value must be positive number. It will be 0.");
+					value = 0;
+				}
+
+				x = value;
 			}
 		}
 
 		public double Y
 		{
-			get => y; 
+			get => y;
 			set
 			{
-				if (value >= 0) {y = value; }
+				if (value < 0)
+				{
+					Console.WriteLine("Coordinate Y value must be positive number. It will be 0.");
+					value = 0;
+				}
+
+				y = value;
 			}
 		}
 
 		public double Z
 		{
 			get => z;
-			set 
-			{ 
-				if (value >= 0) {z = value;}
+			set
+			{
+				if (value < 0)
+				{
+					Console.WriteLine("Coordinate Z value must be positive number.It will be 0.");
+					value = 0;
+				}
+
+				z = value;
 			}
 		}
 

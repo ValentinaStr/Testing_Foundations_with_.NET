@@ -1,15 +1,15 @@
 ﻿namespace InterfacesAndAbstractClasses
 {
-	interface IFlyable
+	internal interface IFlyable
 	{
-		Coordinate CurrentPosition { get; set; }
-		double Speed { get; set; }
-		
-		void FlyTo(Coordinate newPosition);
-		TimeSpan GetFlyTime(Coordinate newPosition);
+		internal Coordinate CurrentPosition { get; set; }
+		internal double Speed { get; set; }
 
-		double GetDistance(Coordinate newPosition);
+		internal void FlyTo(Coordinate newPosition);
+		internal TimeSpan GetFlyTime(Coordinate newPosition);
 
-		string GetDescription();
+		internal double GetDistance(Coordinate newPosition);
+
+		internal string GetDescription();
 	}
 }

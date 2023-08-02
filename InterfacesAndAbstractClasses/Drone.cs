@@ -7,10 +7,24 @@
 		The MaxDistance is 1000 km 
 		The MaxSpeed is 250 km/h */
 
-		internal static readonly double MaxDistance = 1000; //km
-		internal static readonly double MaxSpeed = 250; //km/h
+		internal const double MaxDistance = 1000; //km
+		internal const double MaxSpeed = 250; //km/h
+
+		private double speed;
 		public Coordinate CurrentPosition { get; set; }
-		public double Speed { get; set; }
+		public double Speed
+		{
+			get => speed;
+			set
+			{
+				if (value < 0)
+				{
+					throw new Exception("Drone speed must be a positive number.");
+				}
+
+				speed = value;
+			}
+		}
 
 		public Drone(Coordinate currentPosition, double speed)
 		{
@@ -27,17 +41,17 @@
 			try
 			{
 				var speed = Convert.ToDouble(Console.ReadLine());
-				if (speed <=  MaxSpeed && speed > 0)
+				if (speed <= MaxSpeed && speed > 0)
 				{
 					return speed;
 				}
+
 				Console.WriteLine($"You have entered an invalid speed. Max speed is {MaxSpeed} km/h.\n Please try again.");
 				return GetSpeed();
 			}
-
-			catch 
+			catch
 			{
-				Console.Write("You have entered an invalid speed. Please try again");				
+				Console.Write("You have entered an invalid speed. Please try again");
 				return GetSpeed();
 			}
 		}
@@ -99,9 +113,9 @@
 
 			var possiblePartOfTheFlight = MaxDistance / GetDistance(newPosition);
 
-			Coordinate position = new(Math.Round(CurrentPosition.X + (newPosition.X - CurrentPosition.X) * possiblePartOfTheFlight,0),
-				Math.Round(CurrentPosition.Y + (newPosition.Y - CurrentPosition.Y) * possiblePartOfTheFlight,0),
-				Math.Round(CurrentPosition.Z + (newPosition.Z - CurrentPosition.Z) * possiblePartOfTheFlight,0));
+			Coordinate position = new(Math.Round(CurrentPosition.X + (newPosition.X - CurrentPosition.X) * possiblePartOfTheFlight, 0),
+				Math.Round(CurrentPosition.Y + (newPosition.Y - CurrentPosition.Y) * possiblePartOfTheFlight, 0),
+				Math.Round(CurrentPosition.Z + (newPosition.Z - CurrentPosition.Z) * possiblePartOfTheFlight, 0));
 
 
 			Console.WriteLine($"The maximum drone flight distance only {MaxDistance}." +

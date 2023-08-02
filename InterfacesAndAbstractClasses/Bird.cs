@@ -6,16 +6,37 @@
 		The bird flies the entire distance at a constant speed in the range of 0-20 km/h (given randomly).
 		Max distance is 500 km.*/
 
-		private const double MinSpeed = 0;
-		private const double MaxSpeed = 20;
-		public static readonly double MaxDistance = 500;
-		public Coordinate CurrentPosition { get; set ; }
-		public double Speed { get; set; }
-		
+		internal const double MinSpeed = 0;
+		internal const double MaxSpeed = 20;
+		internal const double MaxDistance = 500;
+
+		private double speed;
+		public Coordinate CurrentPosition { get; set; }
+		public double Speed
+		{
+			get => speed;
+			set
+			{
+				if (value < 0)
+				{
+					throw new Exception("Bird Speed must be a positive number.");
+				}
+
+				speed = value;
+			}
+		}
+
 		public Bird(Coordinate currentPosition)
 		{
 			CurrentPosition = currentPosition;
 			Speed = GetBirdSpeed();
+		}
+
+		private double GetBirdSpeed()
+		{
+			//Return bird speed in the range of 0-20 km/h (given randomly)
+
+			return Math.Round(RandomValueGenerator.GetRandomDouble(MinSpeed, MaxSpeed), 2);
 		}
 
 		public string GetDescription()
@@ -35,7 +56,6 @@
 				Console.ForegroundColor = ConsoleColor.DarkRed;
 				Console.WriteLine("Your bird is tired and does't want to fly.");
 			}
-
 			else if (GetDistance(newPosition) > MaxDistance)
 			{
 				Console.ForegroundColor = ConsoleColor.Black;
@@ -44,7 +64,6 @@
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.BackgroundColor = ConsoleColor.Black;
 			}
-
 			else
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
@@ -77,14 +96,7 @@
 
 			return Math.Round(Math.Sqrt(Math.Pow(newPosition.X - CurrentPosition.X, 2) +
 					Math.Pow(newPosition.Y - CurrentPosition.Y, 2) +
-					Math.Pow(newPosition.Z - CurrentPosition.Z, 2)),2);
-		}
-
-		private static double GetBirdSpeed()
-		{
-			//Return bird speed in the range of 0-20 km/h (given randomly)
-
-			return Math.Round(RandomValueGenerator.GetRandomDouble(MinSpeed, MaxSpeed),2);
+					Math.Pow(newPosition.Z - CurrentPosition.Z, 2)), 2);
 		}
 	}
 }

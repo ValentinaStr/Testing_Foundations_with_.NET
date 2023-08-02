@@ -6,13 +6,29 @@
 		A Plane increases its speed by 10 km/h every 10 km of flight from the initial speed of 200 km/h.
 		The MaxSpeed is 925 km/h */
 
-		internal static readonly double MaxSpeed = 925; // km/h
-		public Coordinate CurrentPosition { get; set ; }
-		public double Speed { get; set; } = 200; // km/h
-		
-		public Plane(Coordinate currentPosition)
+		internal const double MaxSpeed = 925; // km/h
+		internal const double InitialSpeed = 200; // km/h
+
+		private double speed;
+		public Coordinate CurrentPosition { get; set; }
+		public double Speed
+		{
+			get => speed;
+			set
+			{
+				if (value < 0)
+				{
+					throw new Exception("Plane speed must be a positive number.");
+				}
+
+				speed = value;
+			}
+		}
+
+		public Plane(Coordinate currentPosition, double speed = InitialSpeed)
 		{
 			CurrentPosition = currentPosition;
+			Speed = speed;
 		}
 
 		public string GetDescription()
@@ -53,11 +69,11 @@
 			while (distance > 10 && Speed < MaxSpeed)
 			{
 				timeToFly += TimeSpan.FromHours(Math.Round(10 / Speed, 2));
-				Speed = (Speed + 10 > MaxSpeed) ?  MaxSpeed :  Speed + 10;
+				Speed = (Speed + 10 > MaxSpeed) ? MaxSpeed : Speed + 10;
 				distance -= 10;
 			}
 
-			timeToFly += TimeSpan.FromHours(Math.Round(distance / Speed,2));
+			timeToFly += TimeSpan.FromHours(Math.Round(distance / Speed, 2));
 			return timeToFly;
 		}
 

@@ -5,7 +5,7 @@
 		//This class creates flying odject
 		//For all objects, the following units of measurement are used: speed km/h, distance km.
 
-		public Dictionary<string, string> flyable = new (){
+		public Dictionary<string, string> flyable = new(){
 				{"1", "Bird"},
 				{"2", "Plane"},
 				{"3", "Drone"},
@@ -35,7 +35,7 @@
 			//Get coordinates from console
 			//Sets default coordinates
 
-			Coordinate coordinate = new ();
+			Coordinate coordinate = new();
 			Console.WriteLine("Please select position for your flying object. Or it will be (0,0,0) by default.");
 
 			try
@@ -53,13 +53,13 @@
 				Console.ForegroundColor = ConsoleColor.White;
 				coordinate.Z = Convert.ToInt16(Console.ReadLine());
 			}
-
-			catch 
+			catch
 			{
 				coordinate = new(0, 0, 0);
 			}
 
 			Console.ForegroundColor = ConsoleColor.White;
+
 			return coordinate;
 		}
 
@@ -76,14 +76,14 @@
 				case "2":
 					Console.ForegroundColor = ConsoleColor.DarkGreen;
 					Console.WriteLine($"A Plane increases its speed by 10 km/h every 10 km of flight from the initial speed of 200 km/h. \n" +
-										$"The MaxSpeed is {Plane.MaxSpeed} km/h \n ");
+										$"MaxSpeed is {Plane.MaxSpeed} km/h \n ");
 					return new Plane(GetCoordinatePosition());
 
 				case "3":
 					Console.ForegroundColor = ConsoleColor.DarkYellow;
 					Console.WriteLine($"A Drone hovering in the air every 10 minutes of flight for 1 minute.\n" +
-										$"The MaxDistance is {Drone.MaxDistance} km \n" +
-										$"The MaxSpeed is {Drone.MaxSpeed} km/h \n");
+										$"MaxDistance is {Drone.MaxDistance} km \n" +
+										$"MaxSpeed is {Drone.MaxSpeed} km/h \n");
 					return new Drone(GetCoordinatePosition(), Drone.GetSpeed());
 
 				case "0":
