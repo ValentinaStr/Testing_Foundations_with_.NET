@@ -2,7 +2,7 @@
 
 namespace OOP.Specification
 {
-	internal class Engine
+	public class Engine
 	{
 		private double power;
 		private double volume;
@@ -37,7 +37,7 @@ namespace OOP.Specification
 	
 		internal string SerialNumber { get; set; }
 
-		internal Engine(string type, double power, double volume, string serialNumber)
+		public Engine(string type, double power, double volume, string serialNumber)
 		{
 			Type = type;
 			Power = power;

@@ -7,14 +7,14 @@ namespace OOP.TypesOfTransport
 	{
 		internal string TrailerType { get; set; }
 
-		internal Truck(string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		public Truck(int iD, string model, string trailerType,  Engine engine, Transmission transmission, Chassis chassis) : base(iD, model, engine, transmission, chassis)
 		{
 			TrailerType = trailerType;
 		}
 
 		internal override string GetStringWithAllInformation()
 		{
-			return base.Model + "\n Truck with the following characteristics:" +
+			return base.Model + base.ID + "\n Truck with the following characteristics:" +
 				"\n Trailer Type:" + TrailerType +
 				base.GetStringWithAllInformation();
 		}

@@ -1,26 +1,89 @@
-﻿using OOP.Specification;
+﻿using OOP.GarageExceptions;
+using OOP.Specification;
+using System.Reflection;
 using System.Xml.Linq;
 
 namespace OOP.TypesOfTransport
 {
-	internal abstract class Transport
+	public abstract class Transport
 	{
-		internal string Model { get; set; }
-		internal Engine EngineInformation;
-		internal Transmission TransmissionInformation;
-		internal Chassis ChassisInformation;
-
-		internal Transport(string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
+		private int iD;
+		internal int ID
 		{
+			get { return iD; }
+			set
+			{
+				iD = CheckID(value);
+			}
+		}
+		public string Model { get; set; }
+		public Engine EngineInformation;
+		public Transmission TransmissionInformation;
+		public Chassis ChassisInformation;
+
+		public Transport(int iD, string model, Engine engineInformation, Transmission transmissionInformation, Chassis chassisInformation)
+		{
+			ID = iD;
 			Model = model;
 			EngineInformation = engineInformation;
 			TransmissionInformation = transmissionInformation;
 			ChassisInformation = chassisInformation;
 		}
 
+		public int CheckID(int iD)
+		{
+			if (iD < 0 || iD.ToString().Length != 6)
+			{
+				throw new InitializationException("Wrong new transport ID. \n");
+			}
+
+			return iD;
+		}
+
 		internal virtual string GetStringWithAllInformation()
 		{
 			return "\n " + EngineInformation.GetInformation() + TransmissionInformation.GetInformation() + ChassisInformation.GetInformation() + "\n\n";
+		}
+
+		public override bool Equals(object? obj)
+		{
+			if (obj != null && obj is Transport transport)
+			{
+				return ID == transport.ID;
+			}
+
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return ID.GetHashCode();
+		}
+
+		internal PropertyInfo? GetTransportParameter(string parameter)
+		{
+			Type typeOfTransport = GetType();
+			var fieldOfTransport = typeOfTransport.GetProperty(parameter, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+			if (fieldOfTransport == null)
+			{
+				throw new GetAutoByParameterException($"Transport with parameter {parameter} was not found \n");
+			}
+
+			return fieldOfTransport;
+		}
+
+		internal string GetParametrValue(string parameter)
+		{
+			var fieldOfTransport = GetTransportParameter(parameter);
+			var valueOfParametr = fieldOfTransport?.GetValue(this);
+
+			if (valueOfParametr == null)
+			{
+				throw new GetAutoByParameterException($"Transport with parameter {parameter} value was not found \n");
+			}
+
+			return valueOfParametr.ToString();
 		}
 
 		internal virtual XElement GetSpecificationXML()

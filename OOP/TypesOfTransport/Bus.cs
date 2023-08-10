@@ -34,15 +34,15 @@ namespace OOP.TypesOfTransport
 			}
 		}
 
-		internal Bus(string model, int numberOfFloors, int numberOfSeats, Engine engin, Transmission transmission, Chassis chassis) : base(model, engin, transmission, chassis)
+		public Bus(int iD, string model, int numberOfFloors, int numberOfSeats, Engine engin, Transmission transmission, Chassis chassis) : base(iD, model, engin, transmission, chassis)
 		{
 			NumberOfFloors = numberOfFloors;
-			NumberOfSeats = numberOfSeats;		
+			NumberOfSeats = numberOfSeats;
 		}
 
 		internal override string GetStringWithAllInformation()
 		{
-			return base.Model + 
+			return base.Model + " " + base.ID +
 				"\n Bus with the following characteristics:" + 
 				"\n Number Of Floors:" + NumberOfFloors +
 				"\n Number Of Seats:" + NumberOfSeats +

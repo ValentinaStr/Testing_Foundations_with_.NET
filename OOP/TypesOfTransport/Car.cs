@@ -21,7 +21,7 @@ namespace OOP.TypesOfTransport
 			}
 		}
 
-		internal Car(string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(model,engine, transmission, chassis)
+		public Car(int iD, string model, string bodyStyle, int numberOfSeats, Engine engine, Transmission transmission, Chassis chassis) : base(iD, model, engine, transmission, chassis)
 		{
 			BodyStyle = bodyStyle;
 			NumberOfSeats = numberOfSeats;
@@ -29,7 +29,7 @@ namespace OOP.TypesOfTransport
 
 		internal override string GetStringWithAllInformation()
 		{
-			return base.Model + 
+			return base.Model + base.ID +
 				"\n Passenger car with the following characteristics:" + 
 				"\n Body Style:" + BodyStyle + 
 				"\n Number Of Seats:" + NumberOfSeats +

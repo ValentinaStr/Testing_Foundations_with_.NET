@@ -2,7 +2,7 @@
 
 namespace OOP.Specification
 {
-	internal class Transmission
+	public class Transmission
 	{
 		private int numberOfGears;
 		internal string Type { get; set; }
@@ -22,7 +22,7 @@ namespace OOP.Specification
 
 		internal string Manufacturer {get; set; }
 
-		internal Transmission(string type, int numberOfGears, string manufacturer)
+		public Transmission(string type, int numberOfGears, string manufacturer)
 		{
 			Type = type;
 			NumberOfGears = numberOfGears;

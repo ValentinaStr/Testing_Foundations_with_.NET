@@ -2,7 +2,7 @@
 
 namespace OOP.Specification
 {
-	internal class Chassis
+	public class Chassis
 	{
 		private int countOfWheels;
 		private int bearingCapacity;
@@ -34,7 +34,7 @@ namespace OOP.Specification
 			}
 		}
 
-		internal Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
+		public Chassis(int countOfWheels, string numberOfChassis, int bearingCapacity)
 		{
 			CountOfWheels = countOfWheels;
 			NumberOfChassis = numberOfChassis;

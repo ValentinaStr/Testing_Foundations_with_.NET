@@ -7,14 +7,14 @@ namespace OOP.TypesOfTransport
 	{
 		internal string TypeOfScooter { get; set; }
 
-		internal Scooter(string model, string typeOfScooter, Engine engine, Transmission transmission, Chassis chassis) : base(model, engine, transmission, chassis)
+		public Scooter(int iD, string model, string typeOfScooter, Engine engine, Transmission transmission, Chassis chassis) : base(iD, model, engine, transmission, chassis)
 		{
 			TypeOfScooter = typeOfScooter;
 		}
 
 		internal override string GetStringWithAllInformation()
 		{
-			return base.Model + "\n Scooter with the following characteristics:" +
+			return base.Model + base.ID + "\n Scooter with the following characteristics:" +
 				"\n Type Of Scooter:" + TypeOfScooter +
 				base.GetStringWithAllInformation();
 		}
