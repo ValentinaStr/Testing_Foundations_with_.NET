@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_and_Build_Tools", "Dev_and_Build_Tools.csproj", "{F2DE7755-1FC0-4BCD-A034-38C93041B543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dev_and_Build_Tools", "Dev_and_Build_Tools.csproj", "{F2DE7755-1FC0-4BCD-A034-38C93041B543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Dev_and_Build_Tools", "..\Test_Dev_and_Build_Tools\Test_Dev_and_Build_Tools.csproj", "{A8246086-EA40-40C4-A89E-939F6E92C9EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_Dev_and_Build_Tools", "..\Test_Dev_and_Build_Tools\Test_Dev_and_Build_Tools.csproj", "{A8246086-EA40-40C4-A89E-939F6E92C9EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
