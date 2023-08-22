@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedDesignPrinciples", "ObjectOrientedDesignPrinciples.csproj", "{36F7914A-8ABC-4861-AA18-E580A940112F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36F7914A-8ABC-4861-AA18-E580A940112F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F7914A-8ABC-4861-AA18-E580A940112F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F7914A-8ABC-4861-AA18-E580A940112F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F7914A-8ABC-4861-AA18-E580A940112F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C29C792-D5EC-470C-840C-AF376EE092E8}
+	EndGlobalSection
+EndGlobal
