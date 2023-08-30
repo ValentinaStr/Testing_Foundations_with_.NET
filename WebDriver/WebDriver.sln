@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriverEmail", "WebDriverEmail.csproj", "{335F58D2-595F-464D-A26A-11DA6FF69736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEmails", "..\TestEmails\TestEmails.csproj", "{39762E97-C5CF-4AE2-B9DF-3D92D625D780}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{335F58D2-595F-464D-A26A-11DA6FF69736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335F58D2-595F-464D-A26A-11DA6FF69736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335F58D2-595F-464D-A26A-11DA6FF69736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335F58D2-595F-464D-A26A-11DA6FF69736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39762E97-C5CF-4AE2-B9DF-3D92D625D780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39762E97-C5CF-4AE2-B9DF-3D92D625D780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39762E97-C5CF-4AE2-B9DF-3D92D625D780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39762E97-C5CF-4AE2-B9DF-3D92D625D780}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7904D50-E04C-497D-8C03-E58B3A7BC42B}
+	EndGlobalSection
+EndGlobal
