@@ -31,6 +31,7 @@ namespace WebDriverEmail.MailMicrosoft
 			FindElementWithWaiter(loginEmailPasswordNextButton).Click();
 			FindElementWithWaiter(notStaySignedIn).Click();
 
+
 		}
 	}
 }

@@ -1,7 +1,6 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using WebDriverEmail.MailMicrosoft;
-using WebDriverEmail.GMail;
+using EmailWebDriver.GMail;
 
 namespace TestEmails
 {

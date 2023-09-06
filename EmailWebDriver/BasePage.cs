@@ -3,13 +3,10 @@ using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using SeleniumExtras.WaitHelpers;
 
-namespace WebDriverEmail
+namespace EmailWebDriver
 {
 	public abstract class BasePage
 	{
-		private readonly By accountLocator = By.XPath("//a[@class='gb_d gb_xa gb_A']");
-		private readonly string nameAccountFrame = "account";
-
 		protected WebDriver driver;
 		protected WebDriverWait wait;
 		const int WAITTIME = 20;
@@ -40,12 +37,7 @@ namespace WebDriverEmail
 			return wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(nameLocator));
 		}
 
-		public void SwithToFrame()
-		{
-			FindElementWithWaiter(accountLocator).Click();
-			Thread.Sleep(100);
-			driver.SwitchTo().Frame(nameAccountFrame);
-		}
+		
 		public void AcceptAlert()
 		{
 			driver.SwitchTo().Alert().Accept();

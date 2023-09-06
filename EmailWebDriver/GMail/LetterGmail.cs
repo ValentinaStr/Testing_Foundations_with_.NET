@@ -1,15 +1,15 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.WaitHelpers;
+//using SeleniumExtras.WaitHelpers;
 
-namespace WebDriverEmail.GMail
+namespace EmailWebDriver.GMail
 {
 	public class LetterGMail : BasePage
-	{
+	{ 
 		private readonly By newLetterAddressLocator = By.XPath("//input[@peoplekit-id='BbVjBd']");
 		private readonly By newLetterTermLocator = By.XPath("//input[@name='subjectbox']");
 		private readonly By newLetterTextLocator = By.XPath("//div[@class='Am Al editable LW-avf tS-tW']");
 		private readonly By sendNewLetterLocator = By.XPath("//td[@class='gU Up']");
-		public LetterGMail(WebDriver _driver) : base(_driver)
+		public LetterGMail(WebDriver driver) : base(driver)
 		{
 		}
 		public void CreateNewLetterAndSend(string adress, string term, string text)
