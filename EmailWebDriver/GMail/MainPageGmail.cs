@@ -4,6 +4,8 @@ namespace EmailWebDriver.GMail
 {
 	public class MainPageGMail : BasePage
 	{
+
+
 		private readonly By accountLocator = By.XPath("//a[@class='gb_d gb_Aa gb_D']");
 		private readonly By newLetterCreateLocator = By.XPath("//div[@class='T-I T-I-KE L3']");
 		private readonly By textIncommingLetterLocator = By.XPath("//div[contains(@style,'font-family:Aptos,Aptos_EmbeddedFont')]");

@@ -1,6 +1,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using EmailWebDriver.GMail;
+using SeleniumExtras.PageObjects;
 
 namespace TestEmails
 {
@@ -25,9 +26,16 @@ namespace TestEmails
 		[DataRow("viktoriyaselenium", "123Viktoriya321")]
 		public void CheckTheAbilityToLoginPositive(string email, string password)
 		{
-			HomePageGMail home = new HomePageGMail(driver);
-			LoginPageGMail loginPage = home.OpenLoginPage();
-			loginPage.Login(email, password);
+			var homePage = new HomePageGMail(driver);
+			PageFactory.InitElements(driver, homePage);
+			homePage.loginPage.Click();
+			var loginPage = new LoginPageGMail(driver);
+			PageFactory.InitElements(driver, loginPage);
+			loginPage.loginEmail.SendKeys(email);
+			loginPage.loginEmailNextButton.Click();
+			loginPage.loginPassword.SendKeys(password);
+			loginPage.loginPassowrdNextButton.Click();
+
 			MainPageGMail mail001 = new MainPageGMail(driver);
 			var emailName = mail001.GetEmail();
 			Assert.IsTrue(emailName.Contains(email));

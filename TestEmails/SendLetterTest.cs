@@ -39,8 +39,8 @@ namespace SendLetterTest
 
 			var homePageHotmail = new HomePageHotmail(driver);
 			var loginPageHotmail = homePageHotmail.OpenLoginPage();
-			loginPageHotmail.InputEmailInLogin(secondEmail);
-			loginPageHotmail.InputPasswordInLogin(secondPassord);
+			/*loginPageHotmail.InputEmailInLogin(secondEmail);
+			loginPageHotmail.InputPasswordInLogin(secondPassord);*/
 			
 			MainPageHotmail mainPageHotmail = new MainPageHotmail(driver);
 			var lett = mainPageHotmail.OpenNewUnreadLetterFrom();
@@ -68,8 +68,8 @@ namespace SendLetterTest
 
 			var homePageHotMail = new HomePageHotmail(driver);
 			var loginPageHotMail = homePageHotMail.OpenLoginPage();
-			loginPageHotMail.InputEmailInLogin(secondEmail);
-			loginPageHotMail.InputPasswordInLogin(secondPassword);
+			/*loginPageHotMail.InputEmailInLogin(secondEmail);
+			loginPageHotMail.InputPasswordInLogin(secondPassword)*/;
 
 			MainPageHotmail mainPageHotmail = new MainPageHotmail(driver);
 			var letterAnswer = mainPageHotmail.OpenNewUnreadLetterFrom();
@@ -105,8 +105,8 @@ namespace SendLetterTest
 
 			var homePageHotmail = new HomePageHotmail(driver);
 			var loginPageHotmail = homePageHotmail.OpenLoginPage();
-			loginPageHotmail.InputEmailInLogin(secondEmail);
-			loginPageHotmail.InputPasswordInLogin(secondPassord);
+			/*loginPageHotmail.InputEmailInLogin(secondEmail);
+			loginPageHotmail.InputPasswordInLogin(secondPassord);*/
 			MainPageHotmail mainPageHotmail = new MainPageHotmail(driver);
 			var lett = mainPageHotmail.OpenNewUnreadLetterFrom();
 			Thread.Sleep(1000);

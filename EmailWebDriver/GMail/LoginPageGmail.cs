@@ -1,9 +1,28 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.GMail
 {
 	public class LoginPageGMail : BasePage
 	{
+		[FindsBy(How = How.Id, Using = "identifierId")]
+		public IWebElement loginEmail { get; set; }
+
+		[FindsBy(How = How.XPath, Using = "//div[@id='identifierNext']")]
+		public IWebElement loginEmailNextButton { get; set; }
+
+		[FindsBy(How = How.XPath, Using = "//input[@type='password']")]
+		public IWebElement loginPassword { get; set; }
+
+		[FindsBy(How = How.XPath, Using = "//div[@id='passwordNext']")]
+		public IWebElement loginPassowrdNextButton { get; set; }
+
+		[FindsBy(How = How.XPath, Using = "//div[@class='o6cuMc Jj6Lae']")]
+		public IWebElement wrongOrEmptyLogin { get; set; }
+
+		[FindsBy(How = How.XPath, Using = "//div[@class='OyEIQ uSvLId']")]
+		public IWebElement wrongOrEmptyPassword { get; set; }
+
 		private readonly By loginEmaillocator = By.Id("identifierId");
 		private readonly By loginEmailNextButtonLocator = By.XPath("//div[@id='identifierNext']");
 		private readonly By loginPasswordLocator = By.XPath("//input[@type='password']");

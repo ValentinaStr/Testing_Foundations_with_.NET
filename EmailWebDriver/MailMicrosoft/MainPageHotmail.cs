@@ -1,20 +1,23 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.MailMicrosoft
 {
-    public class MainPageHotmail : BasePage
-    {
+	public class MainPageHotmail : BasePage
+	{
+		[FindsBy(How = How.XPath, Using = "//div[contains(@aria-label,'Unread Viktoriya Selenium')][1]")]
+		public IWebElement newLetter { get; set; }
 
-        private readonly By newLetterLocator = By.XPath("//div[contains(@aria-label,'Unread Viktoriya Selenium')]");
-        private readonly By newLetterTextLocator = By.XPath("//div[@aria-label='Message body']");
-        public MainPageHotmail(WebDriver driver) : base(driver)
-        {
-        }
+		private readonly By newLetterLocator = By.XPath("//div[contains(@aria-label,'Unread Viktoriya Selenium')]");
 
-        public LetterHotmail OpenNewUnreadLetterFrom()
-        {
-            FindElementsWithWaiter(newLetterLocator)[0].Click();
-            return new LetterHotmail(driver);
-        }
-    }
+		public MainPageHotmail(WebDriver driver) : base(driver)
+		{
+		}
+
+		public LetterHotmail OpenNewUnreadLetterFrom()
+		{
+			FindElementsWithWaiter(newLetterLocator)[0].Click();
+			return new LetterHotmail(driver);
+		}
+	}
 }

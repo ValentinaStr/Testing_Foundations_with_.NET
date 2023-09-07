@@ -11,9 +11,9 @@ namespace EmailWebDriver
 		protected WebDriverWait wait;
 		const int WAITTIME = 20;
 
-		public BasePage(WebDriver driverC)
+		public BasePage(WebDriver driver)
 		{
-			driver = driverC;
+			driver = driver;
 			wait = new WebDriverWait(driver, TimeSpan.FromSeconds(WAITTIME));
 		}
 
@@ -37,7 +37,7 @@ namespace EmailWebDriver
 			return wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(nameLocator));
 		}
 
-		
+
 		public void AcceptAlert()
 		{
 			driver.SwitchTo().Alert().Accept();
