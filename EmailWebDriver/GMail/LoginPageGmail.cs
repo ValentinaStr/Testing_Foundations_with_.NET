@@ -6,32 +6,25 @@ namespace EmailWebDriver.GMail
 	public class LoginPageGMail : BasePage
 	{
 		[FindsBy(How = How.Id, Using = "identifierId")]
-		public IWebElement loginEmail { get; set; }
+		public IWebElement loginEmail;
 
 		[FindsBy(How = How.XPath, Using = "//div[@id='identifierNext']")]
-		public IWebElement loginEmailNextButton { get; set; }
+		public IWebElement loginEmailNextButton;
 
 		[FindsBy(How = How.XPath, Using = "//input[@type='password']")]
-		public IWebElement loginPassword { get; set; }
+		public IWebElement loginPassword;
 
 		[FindsBy(How = How.XPath, Using = "//div[@id='passwordNext']")]
-		public IWebElement loginPassowrdNextButton { get; set; }
+		public IWebElement loginPassowrdNextButton;
 
 		[FindsBy(How = How.XPath, Using = "//div[@class='o6cuMc Jj6Lae']")]
-		public IWebElement wrongOrEmptyLogin { get; set; }
+		public IWebElement wrongOrEmptyLogin;
 
 		[FindsBy(How = How.XPath, Using = "//div[@class='OyEIQ uSvLId']")]
-		public IWebElement wrongOrEmptyPassword { get; set; }
-
-		private readonly By loginEmaillocator = By.Id("identifierId");
-		private readonly By loginEmailNextButtonLocator = By.XPath("//div[@id='identifierNext']");
-		private readonly By loginPasswordLocator = By.XPath("//input[@type='password']");
-		private readonly By loginPassowrdNextButtonLocator = By.XPath("//div[@id='passwordNext']");
-		private readonly By wrongOrEmptyLoginLocator = By.XPath("//div[@class='o6cuMc Jj6Lae']");
-		private readonly By wrongOrEmptyPasswordLocator = By.XPath("//div[@class='OyEIQ uSvLId']");
-
+		public IWebElement wrongOrEmptyPassword;
 		public LoginPageGMail(WebDriver driver) : base(driver)
 		{
+			PageFactory.InitElements(driver, this);
 		}
 
 		public MainPageGMail Login(string email, string password)
@@ -51,25 +44,23 @@ namespace EmailWebDriver.GMail
 
 		public void InputEmailInLogin(string email)
 		{
-			driver.FindElement(loginEmaillocator).SendKeys(email);
-			FindElementWithWaiter(loginEmailNextButtonLocator).Click();
+			SendKeyElementWithWaiter(loginEmail, email);
+			ClickElementWithWaiter(loginEmailNextButton);
 		}
 		public void InputPasswordInLogin(string password)
 		{
-			FindElementWithWaiter(loginPasswordLocator).SendKeys(password);
-			FindElementWithWaiter(loginPassowrdNextButtonLocator).Click();
+			SendKeyElementWithWaiter(loginPassword, password);
+			ClickElementWithWaiter(loginPassowrdNextButton);
 		}
 
 		public string CheckWrongOrEmptyEmail()
 		{
-			FindElementWithWaiter(wrongOrEmptyLoginLocator);
-			return driver.FindElement(wrongOrEmptyLoginLocator).Text;
+			return GetTextFromElementWithWaiter(wrongOrEmptyLogin);
 		}
 
 		public string CheckWrongOrEmptyPassword()
 		{
-			FindElementWithWaiter(wrongOrEmptyPasswordLocator);
-			return driver.FindElement(wrongOrEmptyPasswordLocator).Text;
+			return GetTextFromElementWithWaiter(wrongOrEmptyPassword);
 		}
 	}
 }

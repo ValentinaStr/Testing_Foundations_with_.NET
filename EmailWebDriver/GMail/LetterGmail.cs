@@ -1,22 +1,39 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.GMail
 {
 	public class LetterGMail : BasePage
-	{ 
-		private readonly By newLetterAddressLocator = By.XPath("//input[@peoplekit-id='BbVjBd']");
-		private readonly By newLetterTermLocator = By.XPath("//input[@name='subjectbox']");
-		private readonly By newLetterTextLocator = By.XPath("//div[@class='Am Al editable LW-avf tS-tW']");
-		private readonly By sendNewLetterLocator = By.XPath("//td[@class='gU Up']");
+	{
+		[FindsBy(How = How.XPath, Using = "//input[@peoplekit-id='BbVjBd']")]
+		public readonly IWebElement newLetterAddress;
+
+		[FindsBy(How = How.XPath, Using = "//input[@name='subjectbox']")]
+		public readonly IWebElement newLetterTerm;
+
+		[FindsBy(How = How.XPath, Using = "//div[@class='Am Al editable LW-avf tS-tW']")]
+		public readonly IWebElement newLetterText;
+
+		[FindsBy(How = How.XPath, Using = "//td[@class='gU Up']")]
+		public readonly IWebElement sendNewLetter;
+
+		[FindsBy(How = How.XPath, Using = "//div[@class='bBe']")]
+		public readonly IWebElement closeddDalogUnsendMail;
+
+		public readonly By unsendMail = By.Id("link_undo");
+
 		public LetterGMail(WebDriver driver) : base(driver)
 		{
+			PageFactory.InitElements(driver, this);
 		}
+
 		public void CreateNewLetterAndSend(string adress, string term, string text)
 		{
 			InputNewLetterAddress(adress);
 			InputNewLetterTerm(term);
 			InputTextNewLetter(text);
 			SendNewLetter();
+			CheckSendingLetter();
 		}
 
 		public void CreateNewLetter(string adress, string term, string text)
@@ -28,22 +45,24 @@ namespace EmailWebDriver.GMail
 
 		public void InputNewLetterAddress(string address)
 		{
-			FindElementWithWaiter(newLetterAddressLocator).SendKeys(address);
+			SendKeyElementWithWaiter(newLetterAddress, address);
 		}
 		public void InputNewLetterTerm(string term)
 		{
-			FindElementWithWaiter(newLetterTermLocator).SendKeys(term);
+			SendKeyElementWithWaiter(newLetterTerm, term);
 		}
 		public void InputTextNewLetter(string text)
 		{
-			FindElementWithWaiter(newLetterTextLocator).SendKeys(text);
+			SendKeyElementWithWaiter(newLetterText, text);
 		}
 		public void SendNewLetter()
 		{
-			FindElementWithWaiter(sendNewLetterLocator).Click();
-			By nameLocator = By.Id("link_undo");
-			WeitInvisibility(nameLocator);
-			FindElementWithWaiter(By.XPath("//div[@class='bBe']")).Click();
+			ClickElementWithWaiter(sendNewLetter);
+		}
+		public void CheckSendingLetter()
+		{
+			WeitInvisibility(unsendMail);
+			ClickElementWithWaiter(closeddDalogUnsendMail);
 		}
 	}
 }

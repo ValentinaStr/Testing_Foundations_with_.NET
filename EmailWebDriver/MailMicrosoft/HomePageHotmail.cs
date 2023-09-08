@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using EmailWebDriver;
 using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.MailMicrosoft
@@ -9,16 +8,15 @@ namespace EmailWebDriver.MailMicrosoft
 		[FindsBy(How = How.LinkText, Using = "Sign in")]
 		public readonly IWebElement logIn;
 
-		private readonly By loginLocator = By.LinkText("Sign in");
-
 		public HomePageHotmail(WebDriver driver) : base(driver)
 		{
-			GoToUrl("https://outlook.live.com/mail/0/");
+			PageFactory.InitElements(driver, this);
+			driver.Url = "https://outlook.live.com/mail/0/";
 		}
 
 		public LoginPageHotmail OpenLoginPage()
 		{
-			FindElementWithWaiter(loginLocator).Click();
+			ClickElementWithWaiter(logIn);
 			return new LoginPageHotmail(driver);
 		}
 	}

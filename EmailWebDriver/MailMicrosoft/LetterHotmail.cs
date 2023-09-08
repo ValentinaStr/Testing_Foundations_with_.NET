@@ -3,8 +3,8 @@ using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.MailMicrosoft
 {
-    public class LetterHotmail : BasePage
-    {
+	public class LetterHotmail : BasePage
+	{
 		[FindsBy(How = How.XPath, Using = "//div[@aria-label='Message body']")]
 		public readonly IWebElement newLetterText;
 
@@ -17,30 +17,29 @@ namespace EmailWebDriver.MailMicrosoft
 		[FindsBy(How = How.XPath, Using = "//div[@role='textbox']")]
 		public readonly IWebElement textAnswer;
 
+		public LetterHotmail(WebDriver _driver) : base(_driver)
+		{
+			PageFactory.InitElements(driver, this);
+		}
 
-		private readonly By newLetterTextLocator = By.XPath("//div[@aria-label='Message body']");
-        private readonly By createAnswerLocator = By.XPath("//button[@aria-label='Reply']");
-        private readonly By sendAnswerLocator = By.XPath("//button[@aria-label='Send']");
-        private readonly By textAnswerLocator = By.XPath("//div[@role='textbox']");
-        public LetterHotmail(WebDriver _driver) : base(_driver)
-        {
-        }
+		public string GetNewLetterText()
+		{
+			return GetTextFromElementWithWaiter(newLetterText);
+		}
 
-        public string CheckNewLetterText()
-        {
-            return FindElementWithWaiter(newLetterTextLocator).Text;
-        }
-
-        public void AnswerLetter(string textAnswer)
-        {
-            FindElementWithWaiter(createAnswerLocator).Click();
-            FindElementWithWaiter(textAnswerLocator).Click();
-            driver.FindElement(textAnswerLocator).SendKeys(textAnswer);
-            FindElementWithWaiter(sendAnswerLocator).Click();
-            FindElementWithWaiter(createAnswerLocator);
-            driver.Navigate().Refresh();
-            try { driver.SwitchTo().Alert().Dismiss(); }
-            catch { Console.WriteLine("!!!!!!!"); }
-        }
-    }
+		public void AnswerLetter(string text)
+		{
+			ClickElementWithWaiter(createAnswer);
+			SendKeyElementWithWaiter(textAnswer, text);
+			ClickElementWithWaiter(sendAnswer);
+			ElementIsClickable(createAnswer);
+			RefreshPage();
+			Thread.Sleep(1000);
+			try
+			{
+				DismissAlert();
+			}
+			catch { }
+		}
+	}
 }

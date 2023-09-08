@@ -1,48 +1,55 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.GMail
 {
 	public class MainPageGMail : BasePage
 	{
+		[FindsBy(How = How.XPath, Using = "//a[@class='gb_d gb_Aa gb_D']")]
+		public readonly IWebElement account;
 
+		[FindsBy(How = How.XPath, Using = "//div[@class='T-I T-I-KE L3']")]
+		public readonly IWebElement newLetterCreate;
 
-		private readonly By accountLocator = By.XPath("//a[@class='gb_d gb_Aa gb_D']");
-		private readonly By newLetterCreateLocator = By.XPath("//div[@class='T-I T-I-KE L3']");
-		private readonly By textIncommingLetterLocator = By.XPath("//div[contains(@style,'font-family:Aptos,Aptos_EmbeddedFont')]");
+		[FindsBy(How = How.XPath, Using = "//div[contains(@style,'font-family:Aptos,Aptos_EmbeddedFont')]")]
+		public readonly IWebElement textIncommingLetter;
+
+		[FindsBy(How = How.XPath, Using = "//tr[@role='row'][1]")]
+		public readonly IWebElement firstIncomingLetter;
 
 		private readonly string nameAccountFrame = "account";
 
 		public MainPageGMail(WebDriver driver) : base(driver)
 		{
-
+			PageFactory.InitElements(driver, this);
 		}
 
-		public AccountFrameGmail SwithToFrame()
+		public AccountFrameGmail SwithToAccountFrame()
 		{
-			FindElementWithWaiter(accountLocator).Click();
-			Thread.Sleep(100);
-			driver.SwitchTo().Frame(nameAccountFrame);
+			ClickElementWithWaiter(account);
+			SwithToFrame(nameAccountFrame);
 			return new AccountFrameGmail(driver);
 		}
 
-		public string GetEmail()
+		public string GetEmailNameFromAccount()
 		{
-			return FindElementWithWaiter(accountLocator).GetAttribute("aria-label");
+			ElementIsClickable(account);
+			return account.GetAttribute("aria-label");
 		}
-		public LetterGMail OpenPageLetterGMail()
+		public LetterGMail OpenNewLetterToCreate()
 		{
-			FindElementWithWaiter(newLetterCreateLocator).Click();
+			ClickElementWithWaiter(newLetterCreate);
 			return new LetterGMail(driver);
 		}
 
-		public void OpenFirstLetter()
+		public void OpenFirstIncomingLetter()
 		{
-			FindElementsWithWaiter(By.XPath("//tr[@role='row']"))[0].Click();
+			ClickElementWithWaiter(firstIncomingLetter);
 		}
 
 		public string GetTextDraftLetter()
 		{
-			return FindElementWithWaiter(textIncommingLetterLocator).Text;
+			return GetTextFromElementWithWaiter(textIncommingLetter);
 		}
 	}
 }

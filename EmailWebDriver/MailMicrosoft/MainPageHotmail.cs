@@ -8,15 +8,14 @@ namespace EmailWebDriver.MailMicrosoft
 		[FindsBy(How = How.XPath, Using = "//div[contains(@aria-label,'Unread Viktoriya Selenium')][1]")]
 		public IWebElement newLetter { get; set; }
 
-		private readonly By newLetterLocator = By.XPath("//div[contains(@aria-label,'Unread Viktoriya Selenium')]");
-
 		public MainPageHotmail(WebDriver driver) : base(driver)
 		{
+			PageFactory.InitElements(driver, this);
 		}
 
 		public LetterHotmail OpenNewUnreadLetterFrom()
 		{
-			FindElementsWithWaiter(newLetterLocator)[0].Click();
+			newLetter.Click();
 			return new LetterHotmail(driver);
 		}
 	}

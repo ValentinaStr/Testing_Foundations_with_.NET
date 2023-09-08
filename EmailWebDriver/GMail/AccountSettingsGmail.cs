@@ -5,31 +5,26 @@ namespace EmailWebDriver.GMail
 {
 	public class AccountSettingsGmail : BasePage
 	{
-		[FindsBy(How = How.XPath, Using = "//a[@href='personal-info']")]
+		[FindsBy(How = How.XPath, Using = "//a[@href='personal-info']/descendant::div[@class='GiKO7c']")] 
 		public readonly IWebElement perconalInfo;
 
 		[FindsBy(How = How.XPath, Using = "//h1[@class='XY0ASe']")]
 		public readonly IWebElement getNameAndNik;
 
-
-		private readonly By perconalInfoLocator = By.XPath("//a[@href='personal-info']");
-		private readonly By getNameAndNikLocator = By.XPath("//h1[@class='XY0ASe']");
-
 		public AccountSettingsGmail(WebDriver driver) : base(driver)
 		{
-
+			PageFactory.InitElements(driver, this);
 		}
 
 		public PersonalInfoGmail OpenPersonalInfo()
 		{
-			FindElementsWithWaiter(perconalInfoLocator)[1].Click();
+			ClickElementWithWaiter(perconalInfo);
 			return new PersonalInfoGmail(driver);
 		}
 
 		public string GetNik()
 		{
-			return FindElementsWithWaiter(getNameAndNikLocator)[0].Text;
+			return GetTextFromElementWithWaiter(getNameAndNik);
 		}
-
 	}
 }
