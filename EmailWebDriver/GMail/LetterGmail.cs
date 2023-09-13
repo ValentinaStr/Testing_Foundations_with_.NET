@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmailWebDriver.Model;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.GMail
@@ -27,20 +28,20 @@ namespace EmailWebDriver.GMail
 			PageFactory.InitElements(driver, this);
 		}
 
-		public void CreateNewLetterAndSend(string adress, string term, string text)
+		public void CreateNewLetterAndSend(User user, Letter letter) //string adress, string term, string text)
 		{
-			InputNewLetterAddress(adress);
-			InputNewLetterTerm(term);
-			InputTextNewLetter(text);
+			InputNewLetterAddress(user.Email);
+			InputNewLetterTerm(letter.Term);
+			InputTextNewLetter(letter.Text);
 			SendNewLetter();
 			CheckSendingLetter();
 		}
 
-		public void CreateNewLetter(string adress, string term, string text)
+		public void CreateNewLetter(User user, Letter letter)
 		{
-			InputNewLetterAddress(adress);
-			InputNewLetterTerm(term);
-			InputTextNewLetter(text);
+			InputNewLetterAddress(user.Email);
+			InputNewLetterTerm(letter.Term);
+			InputTextNewLetter(letter.Text);
 		}
 
 		public void InputNewLetterAddress(string address)

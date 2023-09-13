@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmailWebDriver.Model;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.MailMicrosoft
@@ -23,10 +24,10 @@ namespace EmailWebDriver.MailMicrosoft
 			PageFactory.InitElements(driver, this);
 		}
 
-		public MainPageHotmail Login(string email, string password)
+		public MainPageHotmail Login(User user)
 		{
-			InputEmailInLogin(email);
-			InputPasswordInLogin(password);
+			InputEmailInLogin(user.Email);
+			InputPasswordInLogin(user.Password);
 			return new MainPageHotmail(driver);
 		}
 		public void InputEmailInLogin(string email)

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmailWebDriver.Model;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.GMail
@@ -27,11 +28,11 @@ namespace EmailWebDriver.GMail
 			PageFactory.InitElements(driver, this);
 		}
 
-		public MainPageGMail Login(string email, string password)
+		public MainPageGMail Login(User user)
 		{
 			RefreshCookies();
-			InputEmailInLogin(email);
-			InputPasswordInLogin(password);
+			InputEmailInLogin(user.Email);
+			InputPasswordInLogin(user.Password);
 			return new MainPageGMail(driver);
 		}
 

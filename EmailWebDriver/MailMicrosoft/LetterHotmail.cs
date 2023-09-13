@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using EmailWebDriver.Model;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace EmailWebDriver.MailMicrosoft
@@ -27,10 +28,10 @@ namespace EmailWebDriver.MailMicrosoft
 			return GetTextFromElementWithWaiter(newLetterText);
 		}
 
-		public void AnswerLetter(string text)
+		public void AnswerLetter(Letter letter)
 		{
 			ClickElementWithWaiter(createAnswer);
-			SendKeyElementWithWaiter(textAnswer, text);
+			SendKeyElementWithWaiter(textAnswer, letter.Text);
 			ClickElementWithWaiter(sendAnswer);
 			ElementIsClickable(createAnswer);
 			RefreshPage();

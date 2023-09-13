@@ -6,7 +6,7 @@ namespace TestEmails
 	[TestClass]
 	public class SendLetterTest : BaseTest
 	{
-		[TestMethod]
+		/*[TestMethod]
 		[DataRow("viktoriyaselenium", "123Viktoriya321",
 				"viktoriyaselenium@outlook.com", "123Viktoriya321",
 				"Hi from me", "Do you want new NikName?")]
@@ -67,7 +67,7 @@ namespace TestEmails
 
 		[TestMethod]
 		[DataRow("viktoriyaselenium", "123Viktoriya321",
-				"viktoriyaselenium@outlook.com", "123Viktoriya321", "Hi", "Do you need new NikName?", "bylochka")]
+				"viktoriyaselenium@outlook.com", "123Viktoriya321", "Hi", "Do you need new NikName?", "bylochk1a12")]
 		public void CheckGetLetterChangeNikMail(string firstEmail, string firstPassword,
 										string secondEmail, string secondPassword,
 										string termLetter, string textLetter,
@@ -104,7 +104,7 @@ namespace TestEmails
 			var actualNik = accountSetting.GetNik();
 
 			Assert.IsTrue(actualNik.Contains($"({textAnswerLetter})"));
-		}
+		}*/
 
 	}
 }

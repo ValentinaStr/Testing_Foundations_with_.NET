@@ -34,7 +34,8 @@ namespace EmailWebDriver
 
 		public void ClearElementWithWaiter(IWebElement webElement)
 		{
-			wait.Until(ExpectedConditions.ElementToBeClickable(webElement)).Clear();
+			wait.Until(driver => webElement.Displayed);
+			webElement.Clear();
 		}
 
 		public void SendKeyElementWithWaiter(IWebElement webElement, string text)
@@ -49,7 +50,9 @@ namespace EmailWebDriver
 
 		public string GetTextFromElementWithWaiter(IWebElement webElement)
 		{
-			return wait.Until(ExpectedConditions.ElementToBeClickable(webElement)).Text;
+			wait.Until(driver => webElement.Displayed);
+			var r = webElement.Text;
+			return webElement.Text;
 		}
 
 		public void  SwithToFrame(String nameFrame)

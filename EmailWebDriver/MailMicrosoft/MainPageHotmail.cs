@@ -15,7 +15,8 @@ namespace EmailWebDriver.MailMicrosoft
 
 		public LetterHotmail OpenNewUnreadLetterFrom()
 		{
-			newLetter.Click();
+			ClickElementWithWaiter(newLetter);
+			//newLetter.Click();
 			return new LetterHotmail(driver);
 		}
 	}

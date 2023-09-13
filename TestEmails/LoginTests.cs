@@ -1,4 +1,5 @@
 using EmailWebDriver.GMail;
+using EmailWebDriver.Model;
 
 namespace TestEmails
 {
@@ -6,43 +7,67 @@ namespace TestEmails
 	public class LoginTests : BaseTest
 	{
 		[TestMethod]
-		[DataRow("viktoriyaselenium", "123Viktoriya321","Login with correct data")]
-		public void CheckTheAbilityToLoginPositive(string email, string password, string testMessage)
+		public void CheckTheAbilityToLoginPositive()
 		{
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
-
-			MainPageGMail mainPage = loginPage.Login(email, password);
+			MainPageGMail mainPage = loginPage.Login(userGmail);
 			var emailName = mainPage.GetEmailNameFromAccount();
-
-			Assert.IsTrue(emailName.Contains(email),testMessage);
+			Assert.IsTrue(emailName.Contains(userGmail.Email), "Login with correct data");
 		}
 
+
+
 		[TestMethod]
-		[DataRow("hjyjsyk", "Couldn’t find your Google Account", "Login with incorrect email")]
-		[DataRow("", "Enter an email or phone number", "Login with empty email")]
-		public void CheckTheAbilityToLoginWithWrongEmailNegative(string email, string wrongMessage, string testMessage)
+		[DataRow("Couldn’t find your Google Account", "Login with incorrect email")]
+		public void CheckTheAbilityToLoginWithWrongEmailNegative(string wrongMessage, string testMessage)
 		{
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(email);
+			loginPage.InputEmailInLogin(userGmailWithIncorrectEmail.Email);
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyEmail();
-			
+
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
 		}
 
 		[TestMethod]
-		[DataRow("viktoriyaselenium", "123321", "Wrong password. Try again or click Forgot password to reset it.", "Login with incorrect password")]
-		[DataRow("viktoriyaselenium", "", "Enter a password", "Login with empty password")]
-		public void CheckTheAbilityToLoginWithWrongPasswordNegative(string email, string password, string wrongMessage, string testMessage)
+		[DataRow("Enter an email or phone number", "Login with empty email")]
+		public void CheckTheAbilityToLoginWithEmptyEmailNegative(string wrongMessage, string testMessage)
 		{
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(email);
-			loginPage.InputPasswordInLogin(password);
-			
+			loginPage.InputEmailInLogin(userGmailWithEmptyEmail.Email);
+			var receivedWrongMessage = loginPage.CheckWrongOrEmptyEmail();
+
+			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
+		}
+
+		[TestMethod]
+		[DataRow("Wrong password. Try again or click Forgot password to reset it.", "Login with incorrect password")]
+		public void CheckTheAbilityToLoginWithWrongPasswordNegative(string wrongMessage, string testMessage)
+		{
+			var homePage = new HomePageGMail(driver);
+			var loginPage = homePage.OpenLoginPage();
+
+			loginPage.InputEmailInLogin(userGmailWithIncorrectPassword.Email);
+			loginPage.InputPasswordInLogin(userGmailWithIncorrectPassword.Password);
+
+			var receivedWrongMessage = loginPage.CheckWrongOrEmptyPassword();
+			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
+		}
+
+		[TestMethod]
+		[DataRow("Enter a password", "Login with empty password")]
+		public void CheckTheAbilityToLoginWithEmptyPasswordNegative(string wrongMessage, string testMessage)
+		{
+			var homePage = new HomePageGMail(driver);
+			var loginPage = homePage.OpenLoginPage();
+
+			loginPage.InputEmailInLogin(userGmailWithEmptyPassword.Email);
+			loginPage.InputPasswordInLogin(userGmailWithEmptyPassword.Password);
+
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyPassword();
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
 		}

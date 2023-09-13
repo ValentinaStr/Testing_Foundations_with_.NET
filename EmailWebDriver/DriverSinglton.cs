@@ -26,6 +26,7 @@ namespace EmailWebDriver
 						break;
 					default:
 						driver = new ChromeDriver();
+						driver.Manage().Window.Maximize();
 						break;
 				}
 			}
