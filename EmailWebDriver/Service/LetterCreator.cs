@@ -3,7 +3,7 @@ using EmailWebDriver.Util;
 
 namespace EmailWebDriver.Service
 {
-    public class LetterCreator
+	public class LetterCreator
 	{
 		public static string termLetter = RandomStringGenerator.GenerateRandomString(5);
 		public static string textLetter = RandomStringGenerator.GenerateRandomString(10);

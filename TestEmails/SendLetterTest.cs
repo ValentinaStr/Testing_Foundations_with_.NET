@@ -1,96 +1,87 @@
 using EmailWebDriver.MailMicrosoft;
 using EmailWebDriver.GMail;
+using EmailWebDriver.Model;
+using EmailWebDriver.Service;
 
 namespace TestEmails
 {
 	[TestClass]
 	public class SendLetterTest : BaseTest
 	{
-		/*[TestMethod]
-		[DataRow("viktoriyaselenium", "123Viktoriya321",
-				"viktoriyaselenium@outlook.com", "123Viktoriya321",
-				"Hi from me", "Do you want new NikName?")]
-		public void CheckGetLetter(string firstEmail, string firstPassword,
-									string secondEmail, string secondPassword,
-									string termLetter, string textLetter)
+		private User userGmail = UserCreator.CreateUsers("ResourceGmail");
+		private User userHotmail = UserCreator.CreateUsers("ResourceHotmail");
+		private Letter letter = LetterCreator.CreateLetter();
+		private Letter ansverLetter = LetterCreator.CreateAnswerLetter();
+
+		[TestMethod]
+		public void CheckGetLetter()
 		{
 			var homePageGmail = new HomePageGMail(driver);
 			var loginPageGmail = homePageGmail.OpenLoginPage();
-			var mainPage = loginPageGmail.Login(firstEmail, firstPassword);
+			var mainPage = loginPageGmail.Login(userGmail);
 			var newLetter = mainPage.OpenNewLetterToCreate();
-			newLetter.CreateNewLetterAndSend(secondEmail, termLetter, textLetter);
+			newLetter.CreateNewLetterAndSend(userHotmail, letter);
 
 			var homePageHotmail = new HomePageHotmail(driver);
 			var loginPageHotmail = homePageHotmail.OpenLoginPage();
-			var mainPageHotmail = loginPageHotmail.Login(secondEmail, secondPassword);
+			var mainPageHotmail = loginPageHotmail.Login(userHotmail);
 			var unreadLetter = mainPageHotmail.newLetter.Displayed;
 
 			var letterNew = mainPageHotmail.OpenNewUnreadLetterFrom();
 			var textGetLetter = letterNew.GetNewLetterText();
 
 			Assert.IsTrue(unreadLetter);
-			Assert.AreEqual(textLetter, textGetLetter);
+			Assert.AreEqual(letter.Text, textGetLetter);
 		}
 
 		[TestMethod]
-		[DataRow("viktoriyaselenium", "123Viktoriya321",
-				"viktoriyaselenium@outlook.com", "123Viktoriya321",
-				"Hi from winter ", "How you?",
-				"fines")]
-		public void CheckGetAnswerLetter(string firstEmail, string firstPassword,
-									string secondEmail, string secondPassword,
-									string termLetter, string textLetter,
-									string textAnswerLetter)
+		public void CheckGetAnswerLetter()
 		{
 			var homePageGmail = new HomePageGMail(driver);
 			var loginPageGmail = homePageGmail.OpenLoginPage();
-			var mainPage = loginPageGmail.Login(firstEmail, firstPassword);
+			var mainPage = loginPageGmail.Login(userGmail);
 			var newLetter = mainPage.OpenNewLetterToCreate();
-			newLetter.CreateNewLetterAndSend(secondEmail, termLetter, textLetter);
+			newLetter.CreateNewLetterAndSend(userHotmail, letter);
 
 			var homePageHotmail = new HomePageHotmail(driver);
 			var loginPageHotmail = homePageHotmail.OpenLoginPage();
-			var mainPageHotmail = loginPageHotmail.Login(secondEmail, secondPassword);
-
+			var mainPageHotmail = loginPageHotmail.Login(userHotmail);
+			Thread.Sleep(1000);
 			var newUnreadLetter = mainPageHotmail.OpenNewUnreadLetterFrom();
-			newUnreadLetter.AnswerLetter(textAnswerLetter);
+			newUnreadLetter.AnswerLetter(ansverLetter);
 
 			var homePageGmailAnswer = new HomePageGMail(driver);
 			var loginPageGmailAnswer = homePageGmailAnswer.OpenLoginPage();
-			var mainPageAnswer = loginPageGmailAnswer.Login(firstEmail, firstPassword);
+			var mainPageAnswer = loginPageGmailAnswer.Login(userGmail);
 
 			mainPageAnswer.OpenFirstIncomingLetter();
-			var newNick = mainPageAnswer.GetTextDraftLetter();
+			var newLetterText = mainPageAnswer.GetTextDraftLetter();
 
-			Assert.AreEqual(textAnswerLetter, newNick);
+			Assert.AreEqual(ansverLetter.Text, newLetterText);
 		}
 
 		[TestMethod]
-		[DataRow("viktoriyaselenium", "123Viktoriya321",
-				"viktoriyaselenium@outlook.com", "123Viktoriya321", "Hi", "Do you need new NikName?", "bylochk1a12")]
-		public void CheckGetLetterChangeNikMail(string firstEmail, string firstPassword,
-										string secondEmail, string secondPassword,
-										string termLetter, string textLetter,
-										string textAnswerLetter)
+		public void CheckGetLetterChangeNikMail()
 		{
 			var homePageGmail = new HomePageGMail(driver);
 			var loginPageGmail = homePageGmail.OpenLoginPage();
-			var mainPage = loginPageGmail.Login(firstEmail, firstPassword);
+			var mainPage = loginPageGmail.Login(userGmail);
 			var newLetter = mainPage.OpenNewLetterToCreate();
-			newLetter.CreateNewLetterAndSend(secondEmail, termLetter, textLetter);
+			newLetter.CreateNewLetterAndSend(userHotmail, letter);
 
 			var homePageHotmail = new HomePageHotmail(driver);
 			var loginPageHotmail = homePageHotmail.OpenLoginPage();
-			var mainPageHotmail = loginPageHotmail.Login(secondEmail, secondPassword);
-
+			var mainPageHotmail = loginPageHotmail.Login(userHotmail);
+			Thread.Sleep(1000);
 			var newUnreadLetter = mainPageHotmail.OpenNewUnreadLetterFrom();
-			newUnreadLetter.AnswerLetter(textAnswerLetter);
+			newUnreadLetter.AnswerLetter(ansverLetter);
 
 			var homePageGmailAnswer = new HomePageGMail(driver);
 			var loginPageGmailAnswer = homePageGmailAnswer.OpenLoginPage();
-			var mainPageAnswer = loginPageGmailAnswer.Login(firstEmail, firstPassword);
+			var mainPageAnswer = loginPageGmailAnswer.Login(userGmail);
 
 			mainPageAnswer.OpenFirstIncomingLetter();
+			Thread.Sleep(1000);
 			var newNick = mainPageAnswer.GetTextDraftLetter();
 			var accountFrame = mainPageAnswer.SwithToAccountFrame();
 
@@ -103,8 +94,7 @@ namespace TestEmails
 			driver.Navigate().Refresh();
 			var actualNik = accountSetting.GetNik();
 
-			Assert.IsTrue(actualNik.Contains($"({textAnswerLetter})"));
-		}*/
-
+			Assert.IsTrue(actualNik.Contains($"({ansverLetter.Text})"));
+		}
 	}
 }

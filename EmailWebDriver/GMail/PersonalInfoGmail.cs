@@ -5,8 +5,7 @@ namespace EmailWebDriver.GMail
 {
 	public class PersonalInfoGmail : BasePage
 	{
-
-		[FindsBy(How = How.XPath, Using = "//div[@id='c13']")]
+		[FindsBy(How = How.XPath, Using = "//a[contains(@href,'profile/name?continue')]")]
 		public readonly IWebElement profileName;
 
 		[FindsBy(How = How.XPath, Using = "//div[@data-index='1']/descendant::button[@class='VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ mN1ivc P9Zld']")]
@@ -15,7 +14,7 @@ namespace EmailWebDriver.GMail
 		[FindsBy(How = How.XPath, Using = "//input[@class='VfPpkd-fmcmS-wGMbrd CtvUB']")]
 		public readonly IWebElement changeNik;
 
-		[FindsBy(How = How.XPath, Using = "//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 wMI9H']")]
+		[FindsBy(How = How.XPath, Using = "//button[@class='UywwFc-LgbsSe UywwFc-LgbsSe-OWXEXe-dgl2Hf wMI9H']")]
 		public readonly IWebElement enterNewNik;
 
 		[FindsBy(How = How.XPath, Using = "//a[@id='sdgBod']")]

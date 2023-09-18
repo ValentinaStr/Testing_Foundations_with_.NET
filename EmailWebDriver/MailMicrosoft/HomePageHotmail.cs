@@ -5,7 +5,7 @@ namespace EmailWebDriver.MailMicrosoft
 {
 	public class HomePageHotmail : BasePage
 	{
-		[FindsBy(How = How.LinkText, Using = "Sign in")]
+		[FindsBy(How = How.Id, Using = "mectrl_main_trigger")]
 		public readonly IWebElement logIn;
 
 		public HomePageHotmail(WebDriver driver) : base(driver)

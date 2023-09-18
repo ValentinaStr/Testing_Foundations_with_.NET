@@ -11,7 +11,7 @@ namespace EmailWebDriver.GMail
 		[FindsBy(How = How.XPath, Using = "//div[@class='T-I T-I-KE L3']")]
 		public readonly IWebElement newLetterCreate;
 
-		[FindsBy(How = How.XPath, Using = "//div[contains(@style,'font-family:Aptos,Aptos_EmbeddedFont')]")]
+		[FindsBy(How = How.XPath, Using = "//div[contains(@style,'font-family:Aptos,Aptos')]")]
 		public readonly IWebElement textIncommingLetter;
 
 		[FindsBy(How = How.XPath, Using = "//tr[@role='row'][1]")]

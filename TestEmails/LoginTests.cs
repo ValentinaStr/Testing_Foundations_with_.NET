@@ -1,22 +1,29 @@
 using EmailWebDriver.GMail;
 using EmailWebDriver.Model;
+using EmailWebDriver.Service;
+using EmailWebDriver.Util;
 
 namespace TestEmails
 {
 	[TestClass]
 	public class LoginTests : BaseTest
 	{
+		public static User user = UserCreator.CreateUsers("ResourceGmail");
+		public static User userWithIncorrectEmail = new User(RandomStringGenerator.GenerateRandomString(6), user.Password);
+		public static User userWithIncorrectPassword = new User(user.Email, RandomStringGenerator.GenerateRandomString(6));
+		public static User userWithEmptyPassword = new User(user.Email, string.Empty);
+		public static User userWithEmptyEmail = new User(string.Empty, user.Password);
+
 		[TestMethod]
+		[TestCategory("SmokeTests")]
 		public void CheckTheAbilityToLoginPositive()
 		{
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
-			MainPageGMail mainPage = loginPage.Login(userGmail);
+			MainPageGMail mainPage = loginPage.Login(user);
 			var emailName = mainPage.GetEmailNameFromAccount();
-			Assert.IsTrue(emailName.Contains(userGmail.Email), "Login with correct data");
+			Assert.IsTrue(emailName.Contains(user.Email), "Login with correct data");
 		}
-
-
 
 		[TestMethod]
 		[DataRow("Couldn’t find your Google Account", "Login with incorrect email")]
@@ -25,7 +32,7 @@ namespace TestEmails
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(userGmailWithIncorrectEmail.Email);
+			loginPage.InputEmailInLogin(userWithIncorrectEmail.Email);
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyEmail();
 
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
@@ -38,7 +45,7 @@ namespace TestEmails
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(userGmailWithEmptyEmail.Email);
+			loginPage.InputEmailInLogin(userWithEmptyEmail.Email);
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyEmail();
 
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
@@ -51,8 +58,8 @@ namespace TestEmails
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(userGmailWithIncorrectPassword.Email);
-			loginPage.InputPasswordInLogin(userGmailWithIncorrectPassword.Password);
+			loginPage.InputEmailInLogin(userWithIncorrectPassword.Email);
+			loginPage.InputPasswordInLogin(userWithIncorrectPassword.Password);
 
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyPassword();
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);
@@ -65,8 +72,8 @@ namespace TestEmails
 			var homePage = new HomePageGMail(driver);
 			var loginPage = homePage.OpenLoginPage();
 
-			loginPage.InputEmailInLogin(userGmailWithEmptyPassword.Email);
-			loginPage.InputPasswordInLogin(userGmailWithEmptyPassword.Password);
+			loginPage.InputEmailInLogin(userWithEmptyPassword.Email);
+			loginPage.InputPasswordInLogin(userWithEmptyPassword.Password);
 
 			var receivedWrongMessage = loginPage.CheckWrongOrEmptyPassword();
 			Assert.AreEqual(wrongMessage, receivedWrongMessage, testMessage);

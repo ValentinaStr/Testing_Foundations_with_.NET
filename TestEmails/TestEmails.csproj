@@ -20,9 +20,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NLog" Version="5.2.3" />
+    <PackageReference Include="NLog" Version="5.2.4" />
     <PackageReference Include="PageFactoryCore" Version="1.0.2" />
     <PackageReference Include="Selenium.Opera.WebDriver" Version="2.30.0" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="115.0.1901.200" />
   </ItemGroup>
 
   <ItemGroup>

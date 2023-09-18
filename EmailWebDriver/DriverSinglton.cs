@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 
 namespace EmailWebDriver
@@ -22,6 +23,10 @@ namespace EmailWebDriver
 						break;
 					case "Firefox":
 						driver = new FirefoxDriver();
+						driver.Manage().Window.Maximize();
+						break;
+					case "Edge":
+						driver = new EdgeDriver();
 						driver.Manage().Window.Maximize();
 						break;
 					default:

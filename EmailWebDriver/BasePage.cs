@@ -9,7 +9,7 @@ namespace EmailWebDriver
 	{
 		protected WebDriver driver;
 		protected WebDriverWait wait;
-		private const int waitTime = 30;
+		private const int waitTime = 40;
 
 		public BasePage(WebDriver driver)
 		{
@@ -20,16 +20,20 @@ namespace EmailWebDriver
 		protected void GoToUrl(string url)
 		{
 			driver.Url = url;
-			try
+			/*try
 			{
 				AcceptAlert();
 			}
-			catch { }
+			catch (Exception ex) { }*/
 		}
 		
 		public void ClickElementWithWaiter(IWebElement webElement)
 		{
 			wait.Until(ExpectedConditions.ElementToBeClickable(webElement)).Click();
+		}
+		public bool IsElementVisible(IWebElement element)
+		{
+			return element.Displayed && element.Enabled;
 		}
 
 		public void ClearElementWithWaiter(IWebElement webElement)
@@ -51,7 +55,6 @@ namespace EmailWebDriver
 		public string GetTextFromElementWithWaiter(IWebElement webElement)
 		{
 			wait.Until(driver => webElement.Displayed);
-			var r = webElement.Text;
 			return webElement.Text;
 		}
 
