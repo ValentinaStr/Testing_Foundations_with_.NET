@@ -15,10 +15,13 @@ namespace TestEmails
 			set { testContext = value; }
 		}
 
+		
+
 		[TestInitialize]
 		public void BeforeTest()
 		{
 			driver = DriverSinglton.GetDriver("Chrome"); //"Chrome" , "Firefox" , Edge
+
 		}
 
 		[TestCleanup]
