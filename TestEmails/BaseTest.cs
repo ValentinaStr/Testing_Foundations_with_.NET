@@ -9,19 +9,21 @@ namespace TestEmails
 
 		private TestContext testContext;
 
+		public FileLogger logger;
+		
+
 		public TestContext TestContext
 		{
 			get { return testContext; }
 			set { testContext = value; }
 		}
 
-		
 
 		[TestInitialize]
 		public void BeforeTest()
 		{
 			driver = DriverSinglton.GetDriver("Chrome"); //"Chrome" , "Firefox" , Edge
-
+			logger = new FileLogger();
 		}
 
 		[TestCleanup]
@@ -34,6 +36,12 @@ namespace TestEmails
 				string screenshotPath = Path.Combine(TestContext.TestResultsDirectory, screenshotName);
 				Screenshot TakeScreenshot = driver.GetScreenshot();
 				TakeScreenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
+
+				logger.LogError(testContext.TestName.ToString());
+			}
+			else
+			{
+				logger.LogInfo(testContext.TestName.ToString());
 			}
 
 			DriverSinglton.ClosedDriver();
