@@ -2,8 +2,8 @@
 using EmailWebDriver;
 
 namespace TestEmails
-{
-	public abstract class BaseTest
+{	
+	public abstract class BaseTest 
 	{
 		protected WebDriver driver;
 
@@ -18,11 +18,10 @@ namespace TestEmails
 			set { testContext = value; }
 		}
 
-
 		[TestInitialize]
 		public void BeforeTest()
 		{
-			driver = DriverSinglton.GetDriver("Chrome"); //"Chrome" , "Firefox" , Edge
+			driver = DriverSinglton.GetDriver(Environment.GetEnvironmentVariable("Browser")); //"Chrome" , "Firefox" , Edge
 			logger = new FileLogger();
 		}
 
@@ -31,17 +30,15 @@ namespace TestEmails
 		{
 			if (TestContext.CurrentTestOutcome != UnitTestOutcome.Passed)
 			{
-				string testTime = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-				string screenshotName = "FailedTest_" + testTime + ".Jpeg";
-				string screenshotPath = Path.Combine(TestContext.TestResultsDirectory, screenshotName);
-				Screenshot TakeScreenshot = driver.GetScreenshot();
-				TakeScreenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
+				var fileName = $"{DateTime.Now:yyyyMMdd-HHmmss}.png";
+				string screenshotPath = Path.Combine("C:/ProgramData/Jenkins/.jenkins/workspace/Framework", fileName);
+				driver.GetScreenshot().SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
 
-				logger.LogError(testContext.TestName.ToString());
+				logger.LogError(testContext.TestName.ToString() + " / Failed");
 			}
 			else
 			{
-				logger.LogInfo(testContext.TestName.ToString());
+				logger.LogInfo(testContext.TestName.ToString() + " / Passed");
 			}
 
 			DriverSinglton.ClosedDriver();

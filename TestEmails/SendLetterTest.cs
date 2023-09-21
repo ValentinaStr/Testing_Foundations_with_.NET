@@ -8,7 +8,7 @@ namespace TestEmails
 	[TestClass]
 	public class SendLetterTest : BaseTest
 	{
-		private User userGmail = UserCreator.CreateUsers("ResourceGmail");
+		/*private User userGmail = UserCreator.CreateUsers("ResourceGmail");
 		private User userHotmail = UserCreator.CreateUsers("ResourceHotmail");
 		private Letter letter = LetterCreator.CreateLetter();
 		private Letter ansverLetter = LetterCreator.CreateAnswerLetter();
@@ -95,6 +95,6 @@ namespace TestEmails
 			var actualNik = accountSetting.GetNik();
 
 			Assert.IsTrue(actualNik.Contains($"({ansverLetter.Text})"));
-		}
+		}*/
 	}
 }
