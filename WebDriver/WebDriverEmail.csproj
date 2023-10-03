@@ -1,4 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	xml
+	<Target Name="RunTests">
+		<Exec Command="nunit3-console.exe NUnitTestProject.dll --result=TestResult.xml;format=nunit2" />
+	</Target>
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
